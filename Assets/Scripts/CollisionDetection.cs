@@ -26,8 +26,7 @@ public class CollisionDetection : MonoBehaviour {
         MeshInfo info2 = object2.GetComponent<MeshInfo>();
 
         if (info1.min.x < info2.max.x && info1.max.x > info2.min.x &&
-            //info1.min.y < info2.max.y && info1.max.y > info2.min.y &&
-            info1.min.z < info2.max.z && info1.max.z > info2.min.z)
+            info1.min.y < info2.max.y && info1.max.y > info2.min.y)
         {
             return true;
         }

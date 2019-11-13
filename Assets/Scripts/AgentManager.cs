@@ -5,11 +5,8 @@ using UnityEngine;
 public class AgentManager : MonoBehaviour {
 
     #region Fields
-    GameObject dresden;
+    public GameObject dresden;
     public List<GameObject> enemies = new List<GameObject>();
-    public GameObject psg;
-
-    public Terrain terrain;
 
     public bool showDebugLines;
 
@@ -27,66 +24,18 @@ public class AgentManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        //MovePSG();
-
-        if (Input.GetKeyUp("d"))
-        {
-            showDebugLines = !showDebugLines;
+        //if (Input.GetKeyUp("d"))
+        //{
+        //    showDebugLines = !showDebugLines;
             
-            dresden.GetComponent<Vehicle>().showDebugLines = showDebugLines;
+        //    dresden.GetComponent<Vehicle>().showDebugLines = showDebugLines;
 
-            for(int i = 0; i < enemies.Count; i++)
-            {
-                enemies[i].GetComponent<Vehicle>().showDebugLines = showDebugLines;
-            }
-        }
+        //    for(int i = 0; i < enemies.Count; i++)
+        //    {
+        //        enemies[i].GetComponent<Vehicle>().showDebugLines = showDebugLines;
+        //    }
+        //}
     }
-
-    /// <summary>
-    /// Initially instantiates all of the objects in the scene
-    /// and sets their values that need to be set
-    /// </summary>
-    //public void CreateObjects()
-    //{
-    //    psg = Instantiate(psgPrefab, CreateRandomPosition(psgPrefab), Quaternion.identity);
-    //    enemies.Add(Instantiate(zombiePrefab, CreateRandomPosition(zombiePrefab), Quaternion.identity));
-
-    //    zombies[0].GetComponent<Zombie>().humans = humans;
-    //    zombies[0].GetComponent<Zombie>().zombies = zombies;
-    //    zombies[0].GetComponent<Zombie>().showDebugLines = showDebugLines;
-    //    zombies[0].GetComponent<Zombie>().obstacles = obstacles;
-
-    //    for (int i = 0; i < numberOfHumans; i++)
-    //    {
-    //        humans[i].GetComponent<Human>().humans = humans;
-    //        humans[i].GetComponent<Human>().showDebugLines = showDebugLines;
-    //    }
-    //}
-
-    /// <summary>
-    /// Creates a random position 
-    /// </summary>
-    /// <param name="prefab">The prefab to be used to retrieve local scale to set the y position</param>
-    /// <returns>A vector with a random x and z position</returns>
-    public Vector3 CreateRandomPosition(GameObject prefab)
-    {
-        Vector3 random = new Vector3(Random.Range(5f, terrain.terrainData.size.x - 5), prefab.transform.localScale.y/2, Random.Range(5f, terrain.terrainData.size.z - 5));
-        return random;
-    }
-
-    /// <summary>
-    /// Moves the PSG to a random position when the humans get close to it
-    /// </summary>
-    //public void MovePSG()
-    //{
-    //    for (int i = 0; i < humans.Count; i++)
-    //    {
-    //        if ((psg.transform.position - humans[i].transform.position).sqrMagnitude < 1)
-    //        {
-    //            psg.transform.position = CreateRandomPosition(psgPrefab);
-    //        }
-    //    }
-    //}
 
     /// <summary>
     /// Displays whether Debug lines are currently shown

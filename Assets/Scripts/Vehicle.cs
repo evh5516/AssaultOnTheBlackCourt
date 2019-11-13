@@ -16,8 +16,8 @@ public abstract class Vehicle : MonoBehaviour {
 
     public float frictCoeff;            //a friction coefficient for use in friction calculations
 
-    public Terrain terrain;             //the current terrain
-    public Vector3 terrainDimensions;   //the dimensions of the terrain
+    //public Terrain terrain;             //the current terrain
+    //public Vector3 terrainDimensions;   //the dimensions of the terrain
 
     public Material forwardMaterial;
     public Material rightMaterial;
@@ -38,16 +38,16 @@ public abstract class Vehicle : MonoBehaviour {
     // Use this for initialization
     protected void Start()
     {
-        terrain = Terrain.activeTerrain;
+        //terrain = Terrain.activeTerrain;
         vehiclePosition = transform.position;
-        terrainDimensions = new Vector3(terrain.terrainData.size.x, 0, terrain.terrainData.size.z);
+        //terrainDimensions = new Vector3(terrain.terrainData.size.x, 0, terrain.terrainData.size.y);
     }
 
     // Update is called once per frame
     protected void Update()
     {
         CalcSteeringForces();
-        ultimateForce += StayWithinBounds();
+        //ultimateForce += StayWithinBounds();
         ultimateForce += Separation();
         ultimateForce += ObstacleAvoidance();
 
@@ -88,20 +88,20 @@ public abstract class Vehicle : MonoBehaviour {
         return friction;
     }
 
-    /// <summary>
-    /// Keeps the vehicle within the bounds of the terrain
-    /// </summary>
-    public Vector3 StayWithinBounds()
-    {
-        Vector3 futurePosition = transform.position + velocity * Time.deltaTime;
-        if (futurePosition.x < 0 || futurePosition.x > terrainDimensions.x || futurePosition.z < 0 || futurePosition.z > terrainDimensions.z)
-        {
-            Vector3 terrainCenter = new Vector3(terrainDimensions.x / 2, 0, terrainDimensions.z / 2);
-            Debug.DrawLine(transform.position, terrainCenter);
-            return Seek(new Vector3(25,0,25)) * 2;
-        }
-        return Vector3.zero;
-    }
+    ///// <summary>
+    ///// Keeps the vehicle within the bounds of the terrain
+    ///// </summary>
+    //public Vector3 StayWithinBounds()
+    //{
+    //    Vector3 futurePosition = transform.position + velocity * Time.deltaTime;
+    //    if (futurePosition.x < 0 || futurePosition.x > terrainDimensions.x || futurePosition.y < 0 || futurePosition.y > terrainDimensions.y)
+    //    {
+    //        Vector3 terrainCenter = new Vector3(terrainDimensions.x / 2, 0, terrainDimensions.y / 2);
+    //        Debug.DrawLine(transform.position, terrainCenter);
+    //        return Seek(new Vector3(25,0,25)) * 2;
+    //    }
+    //    return Vector3.zero;
+    //}
 
     /// <summary>
     /// Seeks a target position
@@ -188,7 +188,7 @@ public abstract class Vehicle : MonoBehaviour {
     /// </summary>
     public void OrientAgent()
     {
-        float rotation = Mathf.Atan2(direction.x, direction.z);
+        float rotation = Mathf.Atan2(direction.x, direction.y);
         rotation = (rotation * Mathf.Rad2Deg);
 
         transform.rotation = Quaternion.Euler(0, rotation, 0);
