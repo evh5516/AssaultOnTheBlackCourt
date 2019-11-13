@@ -6,7 +6,7 @@ public class MeshInfo : MonoBehaviour {
 
     #region Fields
     public GameObject obj;
-    public MeshRenderer meshRenderer;
+    public SpriteRenderer spriteRenderer;
     public Vector3 center;
     public Vector3 min;
     public Vector3 max;
@@ -25,20 +25,20 @@ public class MeshInfo : MonoBehaviour {
         {
             obj = gameObject;
         }
-        meshRenderer = obj.GetComponent<MeshRenderer>();
-        center = meshRenderer.bounds.center;
-        min = meshRenderer.bounds.min;
-        max = meshRenderer.bounds.max;
-        size = meshRenderer.bounds.size;
-        extents = meshRenderer.bounds.extents;
+        spriteRenderer = obj.GetComponent<SpriteRenderer>();
+        center = spriteRenderer.bounds.center;
+        min = spriteRenderer.bounds.min;
+        max = spriteRenderer.bounds.max;
+        size = spriteRenderer.bounds.size;
+        extents = spriteRenderer.bounds.extents;
     }
 	
 	// Update is called once per frame
 	void Update ()
     {
-        center = meshRenderer.bounds.center;
-        min = meshRenderer.bounds.min;
-        max = meshRenderer.bounds.max;
+        center = spriteRenderer.bounds.center;
+        min = spriteRenderer.bounds.min;
+        max = spriteRenderer.bounds.max;
         collidingBools.Clear();
     }
 }
