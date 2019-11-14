@@ -24,17 +24,17 @@ public class AgentManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        //if (Input.GetKeyUp("d"))
-        //{
-        //    showDebugLines = !showDebugLines;
-            
-        //    dresden.GetComponent<Vehicle>().showDebugLines = showDebugLines;
+        if (Input.GetKeyUp("r"))
+        {
+            showDebugLines = !showDebugLines;
 
-        //    for(int i = 0; i < enemies.Count; i++)
-        //    {
-        //        enemies[i].GetComponent<Vehicle>().showDebugLines = showDebugLines;
-        //    }
-        //}
+            dresden.GetComponent<Vehicle>().showDebugLines = showDebugLines;
+
+            for (int i = 0; i < enemies.Count; i++)
+            {
+                enemies[i].GetComponent<Vehicle>().showDebugLines = showDebugLines;
+            }
+        }
     }
 
     /// <summary>

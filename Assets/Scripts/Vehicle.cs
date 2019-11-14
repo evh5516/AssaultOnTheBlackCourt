@@ -38,18 +38,16 @@ public abstract class Vehicle : MonoBehaviour {
     // Use this for initialization
     protected void Start()
     {
-        //terrain = Terrain.activeTerrain;
         vehiclePosition = transform.position;
-        //terrainDimensions = new Vector3(terrain.terrainData.size.x, 0, terrain.terrainData.size.y);
     }
 
     // Update is called once per frame
     protected void Update()
     {
         CalcSteeringForces();
-        //ultimateForce += StayWithinBounds();
         ultimateForce += Separation();
         ultimateForce += ObstacleAvoidance();
+        ultimateForce += GenerateFriction(frictCoeff); 
 
         ApplyForce(ultimateForce);
 
@@ -60,6 +58,8 @@ public abstract class Vehicle : MonoBehaviour {
         acceleration = Vector3.zero;
 
         transform.position = vehiclePosition;
+
+        if (velocity.sqrMagnitude < 0.25) return;
 
         OrientAgent();
 
@@ -111,7 +111,7 @@ public abstract class Vehicle : MonoBehaviour {
     public Vector3 Seek(Vector3 targetPosition)
     {
         Vector3 desiredVelocity = targetPosition - transform.position;
-        desiredVelocity.y = 0; 
+        desiredVelocity.z = 0; 
         desiredVelocity = desiredVelocity.normalized * maxSpeed;
 
         Vector3 seekingForce = desiredVelocity - velocity;
@@ -191,7 +191,7 @@ public abstract class Vehicle : MonoBehaviour {
         float rotation = Mathf.Atan2(direction.x, direction.y);
         rotation = (rotation * Mathf.Rad2Deg);
 
-        transform.rotation = Quaternion.Euler(0, rotation, 0);
+        transform.rotation = Quaternion.Euler(0, 0, -rotation);
     }
 
     /// <summary>
