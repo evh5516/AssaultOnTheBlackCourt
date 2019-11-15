@@ -32,7 +32,18 @@ public abstract class Vehicle : MonoBehaviour {
 
     public float currentAngle;
     public float previousAngle;
-    public float wanderStrength; 
+    public float wanderStrength;
+
+    //Gameplay Fields
+    private float health;
+    #endregion
+
+    #region Properties
+    public float Health
+    {
+        get { return health; }
+        set { health = value; }
+    }
     #endregion
 
     // Use this for initialization
