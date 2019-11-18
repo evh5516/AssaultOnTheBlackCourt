@@ -46,7 +46,7 @@ public class SpellCast : MonoBehaviour
             }
             else if (holdStrength > powerLimits[0] && holdStrength < powerLimits[1])
             {
-                spell.transform.localScale = new Vector3(2, 2, 1);
+                spell.transform.localScale = new Vector3(0.75f, 0.75f, 1);
                 //Level 2
 
                 spell.GetComponent<Projectile>().Damage = 75;
@@ -54,7 +54,7 @@ public class SpellCast : MonoBehaviour
             }
             else if (holdStrength > powerLimits[1])
             {
-                spell.transform.localScale = new Vector3(3, 3, 1);
+                spell.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
                 //Level 3
 
