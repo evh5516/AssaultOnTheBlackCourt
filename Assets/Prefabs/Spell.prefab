@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 6220886852832749157}
   - component: {fileID: 7044302158058401145}
   - component: {fileID: 710688087095953606}
-  - component: {fileID: 8466675399377691201}
-  m_Layer: 0
+  - component: {fileID: 7870026800254977671}
+  m_Layer: 9
   m_Name: Spell
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3167ece61c9de14d9814dc493451843, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.35
+  speed: 10
   velocity: {x: 0, y: 0, z: 0}
   timer: 0
   damage: 0
@@ -146,7 +146,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.6878662, y: 0.7090279}
   m_EdgeRadius: 0
---- !u!50 &8466675399377691201
+--- !u!50 &7870026800254977671
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

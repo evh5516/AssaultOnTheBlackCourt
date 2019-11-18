@@ -37,7 +37,9 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0; 
+        timer = 0;
+        Physics2D.IgnoreLayerCollision(8, 9);
+        Physics2D.IgnoreLayerCollision(9, 10);
     }
 
     // Update is called once per frame
@@ -45,16 +47,19 @@ public class Projectile : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        transform.position += velocity; 
+        transform.Translate(velocity * Time.deltaTime); 
 
         if (timer == 10)
         {
             DestroySpell(); 
         }
+
+        Debug.Log(Physics2D.GetIgnoreLayerCollision(9, 10)); 
     }
 
     public void DestroySpell()
     {
+        Debug.Log("Destroy"); 
         Camera.main.GetComponent<CollisionManager>().projectiles.Remove(gameObject);
         Destroy(gameObject);
     }
@@ -63,13 +68,12 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log(collision.gameObject.tag);
 
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == "Wall")
         {
             DestroySpell();
             return;
         }
-
-        if (collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<Enemy>().Health -= damage;
             collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
