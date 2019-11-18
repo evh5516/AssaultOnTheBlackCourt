@@ -36,6 +36,11 @@ public class SpellCast : MonoBehaviour
             Vector3 velocity = (new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) - dresden.transform.position).normalized;
             velocity *= spell.GetComponent<Projectile>().Speed;
 
+            if (Vector3.Dot(velocity, dresden.GetComponent<Dresden>().velocity) < 0)
+            {
+                dresden.GetComponent<Dresden>().velocity = -dresden.GetComponent<Dresden>().velocity;
+            }
+
             spell.GetComponent<Projectile>().Velocity = velocity; 
 
             if (holdStrength > 0 && holdStrength < powerLimits[0])
