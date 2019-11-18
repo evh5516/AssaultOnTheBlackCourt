@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 850933490907723303}
   - component: {fileID: 2580545362204381746}
   - component: {fileID: 4532048451655363026}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Dresden
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,6 +83,7 @@ MonoBehaviour:
   spellPrefabs:
   - {fileID: 6220886852832749154, guid: 405a47f0f59bfe14fb8bf8f67d2b0543, type: 3}
   currentSpellIndex: 0
+  dresden: {fileID: 0}
 --- !u!114 &4532048451655363026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +116,7 @@ GameObject:
   - component: {fileID: 6882680945559121839}
   - component: {fileID: 2635695600006222092}
   - component: {fileID: 8690464015264672145}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: HarrySheet_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}

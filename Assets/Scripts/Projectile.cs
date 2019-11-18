@@ -38,7 +38,8 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         timer = 0;
-        Physics.IgnoreLayerCollision(0, 10); 
+        Physics2D.IgnoreLayerCollision(8, 9);
+        Physics2D.IgnoreLayerCollision(9, 10);
     }
 
     // Update is called once per frame
@@ -52,6 +53,8 @@ public class Projectile : MonoBehaviour
         {
             DestroySpell(); 
         }
+
+        Debug.Log(Physics2D.GetIgnoreLayerCollision(9, 10)); 
     }
 
     public void DestroySpell()
@@ -70,8 +73,7 @@ public class Projectile : MonoBehaviour
             DestroySpell();
             return;
         }
-
-        if (collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.tag == "Enemy")
         {
             collision.gameObject.GetComponent<Enemy>().Health -= damage;
             collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
