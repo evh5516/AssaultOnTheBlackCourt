@@ -7,7 +7,7 @@ public class SpellCast : MonoBehaviour
     [SerializeField]
     private float holdStrength;
 
-    public List<int> powerLimits;
+    public List<float> powerLimits;
 
     public GameObject[] spellPrefabs;
     public int currentSpellIndex; 
@@ -37,26 +37,29 @@ public class SpellCast : MonoBehaviour
 
             spell.GetComponent<Projectile>().Velocity = velocity; 
 
-            if (holdStrength > 0 && holdStrength < powerLimits[1])
+            if (holdStrength > 0 && holdStrength < powerLimits[0])
             {
                 spell.transform.localScale = new Vector3(1, 1, 1);
 
-                spell.GetComponent<Projectile>().Damage = 25; 
+                spell.GetComponent<Projectile>().Damage = 25;
+                holdStrength = 0;
             }
-            else if (holdStrength > powerLimits[1] && holdStrength < powerLimits[2])
+            else if (holdStrength > powerLimits[0] && holdStrength < powerLimits[1])
             {
-                spell.transform.localScale = new Vector3(2, 2, 1);
+                spell.transform.localScale = new Vector3(0.75f, 0.75f, 1);
                 //Level 2
 
                 spell.GetComponent<Projectile>().Damage = 75;
+                holdStrength = 0;
             }
-            else if (holdStrength > powerLimits[3])
+            else if (holdStrength > powerLimits[1])
             {
-                spell.transform.localScale = new Vector3(3, 3, 1);
+                spell.transform.localScale = new Vector3(0.5f, 0.5f, 1);
 
                 //Level 3
 
                 spell.GetComponent<Projectile>().Damage = 150;
+                holdStrength = 0;
             }
         }
     }
