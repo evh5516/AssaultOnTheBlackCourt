@@ -68,4 +68,14 @@ public class Dresden : Vehicle
             GL.End();
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        velocity = Vector3.zero; 
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        velocity = Vector3.zero;
+    }
 }
