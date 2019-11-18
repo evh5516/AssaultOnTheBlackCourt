@@ -10,12 +10,14 @@ public class SpellCast : MonoBehaviour
     public List<int> powerLimits;
 
     public GameObject[] spellPrefabs;
-    public int currentSpellIndex; 
+    public int currentSpellIndex;
+
+    public GameObject dresden; 
 
     // Start is called before the first frame update
     void Start()
     {
-        //powerLimits = new List<int>(3);
+        dresden = Camera.main.GetComponent<CollisionManager>().dresden; 
     }
 
     // Update is called once per frame
@@ -28,11 +30,10 @@ public class SpellCast : MonoBehaviour
 
         if(Input.GetMouseButtonUp(0))
         {
-            GameObject spell = Instantiate(spellPrefabs[0], Camera.main.GetComponent<CollisionManager>().dresden.transform.position, Camera.main.GetComponent<CollisionManager>().dresden.transform.rotation);
+            GameObject spell = Instantiate(spellPrefabs[0], dresden.transform.position + dresden.GetComponent<Dresden>().velocity.normalized, dresden.transform.rotation);
             Camera.main.GetComponent<CollisionManager>().projectiles.Add(spell);
 
-            Vector3 velocity = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Camera.main.GetComponent<CollisionManager>().dresden.transform.position;
-            velocity.Normalize();
+            Vector3 velocity = (Camera.main.ScreenToWorldPoint(Input.mousePosition) - Camera.main.GetComponent<CollisionManager>().dresden.transform.position).normalized;
             velocity *= spell.GetComponent<Projectile>().Speed;
 
             spell.GetComponent<Projectile>().Velocity = velocity; 

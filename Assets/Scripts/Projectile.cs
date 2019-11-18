@@ -37,7 +37,8 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        timer = 0; 
+        timer = 0;
+        Physics.IgnoreLayerCollision(0, 10); 
     }
 
     // Update is called once per frame
@@ -45,7 +46,7 @@ public class Projectile : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        transform.position += velocity; 
+        transform.Translate(velocity * Time.deltaTime); 
 
         if (timer == 10)
         {
@@ -55,6 +56,7 @@ public class Projectile : MonoBehaviour
 
     public void DestroySpell()
     {
+        Debug.Log("Destroy"); 
         Camera.main.GetComponent<CollisionManager>().projectiles.Remove(gameObject);
         Destroy(gameObject);
     }
@@ -63,7 +65,7 @@ public class Projectile : MonoBehaviour
     {
         Debug.Log(collision.gameObject.tag);
 
-        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Obstacle")
+        if (collision.gameObject.tag == "Wall")
         {
             DestroySpell();
             return;

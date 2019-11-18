@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5855777283210538679}
   - component: {fileID: 5786958316331309849}
   - component: {fileID: 8000264771957627880}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -112,6 +112,7 @@ MonoBehaviour:
   currentAngle: 0
   previousAngle: 0
   wanderStrength: 0
+  health: 0
   pathNodes: []
   currentPathNode: 0
   colorTicker: 0
