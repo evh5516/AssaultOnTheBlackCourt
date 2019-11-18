@@ -5788,25 +5788,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dresden
       objectReference: {fileID: 0}
+    - target: {fileID: 2635695600006222092, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: m_FlipX
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: powerLimits.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: powerLimits.Array.data[0]
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: powerLimits.Array.data[1]
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: powerLimits.Array.data[2]
-      value: 5
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: powerLimits.Array.data[3]
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 850933490907723301, guid: e81c388fc508694449064abecd463758,
         type: 3}
@@ -5897,11 +5907,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Enabled
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2635695600006222092, guid: e81c388fc508694449064abecd463758,
-        type: 3}
-      propertyPath: m_FlipX
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81c388fc508694449064abecd463758, type: 3}
