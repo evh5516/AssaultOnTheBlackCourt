@@ -14,6 +14,8 @@ public class Dresden : Vehicle
     void Update()
     {
         base.Update();
+
+        OrientSprite(); 
     }
 
     public override void CalcSteeringForces()
@@ -69,13 +71,24 @@ public class Dresden : Vehicle
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        velocity = Vector3.zero; 
-    }
+    //private void OnCollisionEnter2D(Collision2D collision)
+    //{
+    //    velocity = Vector3.zero; 
+    //}
 
-    private void OnCollisionStay(Collision collision)
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    velocity = Vector3.zero;
+    //}
+
+    private void OrientSprite()
     {
-        velocity = Vector3.zero;
+        bool flip = gameObject.GetComponentInChildren<SpriteRenderer>().flipX;
+        float dot = Vector3.Dot(velocity, transform.right);
+
+        if (dot < 0) flip = true;
+        else if (dot > 0) flip = false;
+
+        gameObject.GetComponentInChildren<SpriteRenderer>().flipX = flip; 
     }
 }

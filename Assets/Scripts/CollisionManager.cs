@@ -27,35 +27,34 @@ public class CollisionManager : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //runs through the list of humans and zombies
-        //and applies the AABB collision method to all of them 
-        //to check if they're colliding
-        for (int j = 0; j < enemies.Count; j++)
-        {
-            bool colliding = collisionDetection.AABBCollision(enemies[j], dresden);
-            dresden.GetComponent<MeshInfo>().collidingBools.Add(colliding);
+        ////and applies the AABB collision method to all of them 
+        ////to check if they're colliding
+        //for (int j = 0; j < enemies.Count; j++)
+        //{
+        //    bool colliding = collisionDetection.AABBCollision(enemies[j], dresden);
+        //    dresden.GetComponent<MeshInfo>().collidingBools.Add(colliding);
 
-            for (int i = 0; i < projectiles.Count; i++)
-            {
-                colliding = collisionDetection.AABBCollision(enemies[j], projectiles[i]);
-                enemies[j].GetComponent<MeshInfo>().collidingBools.Add(colliding); 
-            }
-        }
+        //    for (int i = 0; i < projectiles.Count; i++)
+        //    {
+        //        colliding = collisionDetection.AABBCollision(enemies[j], projectiles[i]);
+        //        enemies[j].GetComponent<MeshInfo>().collidingBools.Add(colliding); 
+        //    }
+        //}
 
-        //Collision resolution
+        ////Collision resolution
 
-        for (int i = 0; i < enemies.Count; i++)
-        {
-            for (int j = 0; j < projectiles.Count; j++)
-            {
-                if (enemies[i].GetComponent<MeshInfo>().collidingBools[j])
-                {
-                    enemies[i].GetComponent<Enemy>().Health -= projectiles[j].GetComponent<Projectile>().Damage;
-                    projectiles[j].GetComponent<Projectile>().DestroySpell();
-                    j--;
-                }
-            }
-        }
+        //for (int i = 0; i < enemies.Count; i++)
+        //{
+        //    for (int j = 0; j < projectiles.Count; j++)
+        //    {
+        //        if (enemies[i].GetComponent<MeshInfo>().collidingBools[j])
+        //        {
+        //            enemies[i].GetComponent<Enemy>().Health -= projectiles[j].GetComponent<Projectile>().Damage;
+        //            projectiles[j].GetComponent<Projectile>().DestroySpell();
+        //            j--;
+        //        }
+        //    }
+        //}
         //if (dresden.GetComponent<MeshInfo>().collidingBools[j])
         //{
 

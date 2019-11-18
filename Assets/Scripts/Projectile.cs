@@ -6,6 +6,8 @@ public class Projectile : MonoBehaviour
 {
     #region Fields
     [SerializeField]
+    private float speed; 
+    [SerializeField]
     private Vector3 velocity;
     [SerializeField]
     private float timer;
@@ -19,6 +21,11 @@ public class Projectile : MonoBehaviour
     {
         get { return damage; }
         set { damage = value; }
+    }
+    public float Speed
+    {
+        get { return speed; }
+        set { speed = value; }
     }
     public Vector3 Velocity
     {
@@ -40,7 +47,7 @@ public class Projectile : MonoBehaviour
 
         transform.position += velocity; 
 
-        if (timer == 5)
+        if (timer == 10)
         {
             DestroySpell(); 
         }
@@ -49,6 +56,25 @@ public class Projectile : MonoBehaviour
     public void DestroySpell()
     {
         Camera.main.GetComponent<CollisionManager>().projectiles.Remove(gameObject);
-        Destroy(this);
+        Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log(collision.gameObject.tag);
+
+        if (collision.gameObject.tag == "Wall" || collision.gameObject.tag == "Obstacle")
+        {
+            DestroySpell();
+            return;
+        }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            collision.gameObject.GetComponent<Enemy>().Health -= damage;
+            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            DestroySpell();
+            return;
+        }
     }
 }

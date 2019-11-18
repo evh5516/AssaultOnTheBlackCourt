@@ -35,7 +35,8 @@ public abstract class Vehicle : MonoBehaviour {
     public float wanderStrength;
 
     //Gameplay Fields
-    private float health;
+    [SerializeField]
+    protected float health;
     #endregion
 
     #region Properties
@@ -72,9 +73,9 @@ public abstract class Vehicle : MonoBehaviour {
         //transform.Translate(velocity * Time.deltaTime);
         gameObject.GetComponent<Rigidbody2D>().MovePosition(vehiclePosition);
 
-        if (velocity.sqrMagnitude < 0.25) return;
+        if (velocity.sqrMagnitude < 0.0125) velocity = Vector3.zero;
 
-        OrientAgent();
+        //OrientAgent();
 
         //Debug.DrawLine(transform.position, transform.position + transform.forward, Color.green);
         //Debug.DrawLine(transform.position, transform.position + transform.right, Color.blue);

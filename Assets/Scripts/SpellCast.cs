@@ -31,7 +31,11 @@ public class SpellCast : MonoBehaviour
             GameObject spell = Instantiate(spellPrefabs[0], Camera.main.GetComponent<CollisionManager>().dresden.transform.position, Camera.main.GetComponent<CollisionManager>().dresden.transform.rotation);
             Camera.main.GetComponent<CollisionManager>().projectiles.Add(spell);
 
-            spell.GetComponent<Projectile>().Velocity = Camera.main.GetComponent<CollisionManager>().dresden.GetComponent<Dresden>().velocity.normalized * 2; 
+            Vector3 velocity = Camera.main.ScreenToWorldPoint(Input.mousePosition) - Camera.main.GetComponent<CollisionManager>().dresden.transform.position;
+            velocity.Normalize();
+            velocity *= spell.GetComponent<Projectile>().Speed;
+
+            spell.GetComponent<Projectile>().Velocity = velocity; 
 
             if (holdStrength > 0 && holdStrength < powerLimits[1])
             {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class MeshInfo : MonoBehaviour {
 
@@ -25,7 +26,9 @@ public class MeshInfo : MonoBehaviour {
         {
             obj = gameObject;
         }
-        spriteRenderer = obj.GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer == null) spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
         center = spriteRenderer.bounds.center;
         min = spriteRenderer.bounds.min;
         max = spriteRenderer.bounds.max;
