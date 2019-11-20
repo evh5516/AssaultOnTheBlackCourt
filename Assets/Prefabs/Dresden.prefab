@@ -79,7 +79,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   holdStrength: 0
-  powerLimits: 
+  powerLimits:
+  - 0.5
+  - 1
+  - 2
+  - 100
   spellPrefabs:
   - {fileID: 6220886852832749154, guid: 405a47f0f59bfe14fb8bf8f67d2b0543, type: 3}
   currentSpellIndex: 0
@@ -97,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 0}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 2635695600006222092}
   center: {x: 0, y: 0, z: 0}
   min: {x: 0, y: 0, z: 0}
   max: {x: 0, y: 0, z: 0}

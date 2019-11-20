@@ -71,20 +71,10 @@ public class Dresden : Vehicle
         }
     }
 
-    //private void OnCollisionEnter2D(Collision2D collision)
-    //{
-    //    velocity = Vector3.zero; 
-    //}
-
-    //private void OnCollisionStay(Collision collision)
-    //{
-    //    velocity = Vector3.zero;
-    //}
-
     private void OrientSprite()
     {
         bool flip = gameObject.GetComponentInChildren<SpriteRenderer>().flipX;
-        float dot = Vector3.Dot(velocity, transform.right);
+        float dot = Vector3.Dot(direction, transform.right);
 
         if (dot < 0) flip = true;
         else if (dot > 0) flip = false;
