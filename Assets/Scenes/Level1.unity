@@ -7851,6 +7851,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   game: 1
   player: {fileID: 1108683927}
+  enemies: []
   pauseCanvas: {fileID: 683146155}
   healthSlider: {fileID: 555865610}
 --- !u!1 &1303316917

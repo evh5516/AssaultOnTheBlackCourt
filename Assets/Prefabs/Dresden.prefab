@@ -82,8 +82,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   holdStrength: 0
   powerLimits:
-  - 2.5
-  - 5
+  - 0.5
+  - 0.75
   spellPrefabs:
   - {fileID: 6220886852832749154, guid: 405a47f0f59bfe14fb8bf8f67d2b0543, type: 3}
   currentSpellIndex: 0

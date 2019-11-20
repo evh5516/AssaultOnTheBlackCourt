@@ -46,6 +46,7 @@ public class Enemy : Vehicle
 
             if (health <= 0)
             {
+                Camera.main.GetComponent<UIManager>().enemies.Remove(gameObject);
                 Destroy(gameObject);
             }
 
