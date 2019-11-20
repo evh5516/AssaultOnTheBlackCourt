@@ -10,15 +10,13 @@ public class Enemy : Vehicle
     [SerializeField]
     private int currentPathNode;
     [SerializeField]
-    private float colorTicker;
-    [SerializeField]
-    private bool ranged; 
+    private float colorTicker; 
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        //health = 100; 
+        health = 100; 
     }
 
     // Update is called once per frame
@@ -39,18 +37,13 @@ public class Enemy : Vehicle
         {
             Destroy(gameObject); 
         }
-
-        if (ranged)
-        {
-            CastSpell(); 
-        }
     }
 
     public override void CalcSteeringForces()
     {
         Pursuit(pathNodes[currentPathNode]);
 
-        if ((transform.position - pathNodes[currentPathNode].transform.position).sqrMagnitude < 1) currentPathNode++;
+        if ((transform.position - pathNodes[currentPathNode].transform.position).sqrMagnitude < 9) currentPathNode++;
 
         if (currentPathNode == pathNodes.Count) currentPathNode = 0; 
     }
@@ -58,10 +51,5 @@ public class Enemy : Vehicle
     public override Vector3 Separation()
     {
         return Vector3.zero;
-    }
-
-    public void CastSpell()
-    {
-
     }
 }

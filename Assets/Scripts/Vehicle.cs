@@ -57,22 +57,21 @@ public abstract class Vehicle : MonoBehaviour {
     protected void Update()
     {
         CalcSteeringForces();
-        //ultimateForce += Separation();
-        //ultimateForce += ObstacleAvoidance();
-        //ultimateForce += GenerateFriction(frictCoeff);
+        ultimateForce += Separation();
+        ultimateForce += ObstacleAvoidance();
+        ultimateForce += GenerateFriction(frictCoeff);
 
-        //ApplyForce(ultimateForce);
-        gameObject.GetComponent<Rigidbody2D>().AddForce(ultimateForce);
+        ApplyForce(ultimateForce);
 
         velocity += acceleration * Time.deltaTime;
-        //vehiclePosition += velocity * Time.deltaTime;
+        vehiclePosition += velocity * Time.deltaTime;
 
         direction = velocity.normalized;
-        //acceleration = Vector3.zero;
+        acceleration = Vector3.zero;
 
         //transform.position = vehiclePosition;
         //transform.Translate(velocity * Time.deltaTime);
-        //gameObject.GetComponent<Rigidbody2D>().MovePosition(vehiclePosition);
+        gameObject.GetComponent<Rigidbody2D>().MovePosition(vehiclePosition);
 
         if (velocity.sqrMagnitude < 0.0125) velocity = Vector3.zero;
 

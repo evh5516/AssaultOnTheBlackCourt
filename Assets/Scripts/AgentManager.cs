@@ -37,13 +37,13 @@ public class AgentManager : MonoBehaviour {
         }
     }
 
-    ///// <summary>
-    ///// Displays whether Debug lines are currently shown
-    ///// and how to turn them on and off
-    ///// </summary>
-    //public void OnGUI()
-    //{
-    //    GUI.Box(new Rect(0, 0, 100, 40), "Show Debug \nLines:" + showDebugLines.ToString());
-    //    GUI.Box(new Rect(0, 50, 130, 55), "Press the 'D' key\n to turn Debug Lines\n On and Off");
-    //}
+    /// <summary>
+    /// Displays whether Debug lines are currently shown
+    /// and how to turn them on and off
+    /// </summary>
+    public void OnGUI()
+    {
+        GUI.Box(new Rect(0, 0, 100, 40), "Show Debug \nLines:" + showDebugLines.ToString());
+        GUI.Box(new Rect(0, 50, 130, 55), "Press the 'D' key\n to turn Debug Lines\n On and Off");
+    }
 }
