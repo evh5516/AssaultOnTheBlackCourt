@@ -25,7 +25,7 @@ public abstract class Vehicle : MonoBehaviour {
 
     public bool showDebugLines;
 
-    public GameObject[] obstacles;
+    public List<GameObject> obstacles;
 
     public float radius; 
     public float safeRadius;
@@ -37,9 +37,16 @@ public abstract class Vehicle : MonoBehaviour {
     //Gameplay Fields
     [SerializeField]
     protected float health;
+
+    protected bool paused;
     #endregion
 
     #region Properties
+    public bool Paused
+    {
+        get { return paused; }
+        set { paused = value; }
+    }
     public float Health
     {
         get { return health; }
@@ -57,21 +64,23 @@ public abstract class Vehicle : MonoBehaviour {
     protected void Update()
     {
         CalcSteeringForces();
-        ultimateForce += Separation();
-        ultimateForce += ObstacleAvoidance();
-        ultimateForce += GenerateFriction(frictCoeff);
+        //ultimateForce += Separation();
+        //ultimateForce += ObstacleAvoidance();
+        //ultimateForce += GenerateFriction(frictCoeff);
 
-        ApplyForce(ultimateForce);
+        //ApplyForce(ultimateForce);
+        gameObject.GetComponent<Rigidbody2D>().AddForce(ultimateForce); 
 
-        velocity += acceleration * Time.deltaTime;
-        vehiclePosition += velocity * Time.deltaTime;
+        //velocity += acceleration * Time.deltaTime;
+        //vehiclePosition += velocity * Time.deltaTime;
 
-        direction = velocity.normalized;
-        acceleration = Vector3.zero;
+        direction = gameObject.GetComponent<Rigidbody2D>().velocity.normalized;
+        //direction = velocity.normalized;
+        //acceleration = Vector3.zero;
 
         //transform.position = vehiclePosition;
         //transform.Translate(velocity * Time.deltaTime);
-        gameObject.GetComponent<Rigidbody2D>().MovePosition(vehiclePosition);
+        //gameObject.GetComponent<Rigidbody2D>().MovePosition(vehiclePosition);
 
         if (velocity.sqrMagnitude < 0.0125) velocity = Vector3.zero;
 
@@ -218,7 +227,7 @@ public abstract class Vehicle : MonoBehaviour {
     {
         Vector3 ultimateAvoidanceForce = Vector3.zero;
 
-        for (int i = 0; i < obstacles.Length; i++)
+        for (int i = 0; i < obstacles.Count; i++)
         {
             Vector3 vToC = obstacles[i].transform.position - transform.position;
             if (Vector3.Dot(vToC,transform.forward) < 0)

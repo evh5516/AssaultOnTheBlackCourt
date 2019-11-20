@@ -53,20 +53,18 @@ public class Projectile : MonoBehaviour
         {
             DestroySpell(); 
         }
-
-        Debug.Log(Physics2D.GetIgnoreLayerCollision(9, 10)); 
     }
 
     public void DestroySpell()
     {
-        Debug.Log("Destroy"); 
+        //Debug.Log("Destroy"); 
         Camera.main.GetComponent<CollisionManager>().projectiles.Remove(gameObject);
         Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log(collision.gameObject.tag);
+        //Debug.Log(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "Wall")
         {
