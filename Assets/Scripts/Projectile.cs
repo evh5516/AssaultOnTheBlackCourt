@@ -40,6 +40,7 @@ public class Projectile : MonoBehaviour
         timer = 0;
         Physics2D.IgnoreLayerCollision(8, 9);
         Physics2D.IgnoreLayerCollision(9, 10);
+        Physics2D.IgnoreLayerCollision(0, 9); 
     }
 
     // Update is called once per frame

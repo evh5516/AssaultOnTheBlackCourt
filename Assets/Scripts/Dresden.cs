@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Dresden : Vehicle
 {
-    public int MAX_HEALTH; 
+    public int MAX_HEALTH;
+    public List<Pickup> activePickups = new List<Pickup>(); 
 
     // Start is called before the first frame update
     void Start()
