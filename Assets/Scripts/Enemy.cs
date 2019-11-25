@@ -10,7 +10,9 @@ public class Enemy : Vehicle
     [SerializeField]
     private int currentPathNode;
     [SerializeField]
-    private float colorTicker; 
+    private float colorTicker;
+    private bool inAttackRange;
+    private GameObject dresden;
     #endregion
 
     // Start is called before the first frame update
@@ -25,7 +27,9 @@ public class Enemy : Vehicle
         foreach (GameObject desk in desks)
             obstacles.Add(desk); 
         foreach (GameObject wall in walls)
-            obstacles.Add(wall); 
+            obstacles.Add(wall);
+
+        dresden = GameObject.FindWithTag("Player");
     }
 
     // Update is called once per frame
@@ -50,6 +54,11 @@ public class Enemy : Vehicle
                 Destroy(gameObject);
             }
 
+            if (inAttackRange == true)
+            {
+                dresden.GetComponent<Dresden>().Health -= 50;
+            }
+
             ultimateForce += ObstacleAvoidance();
             GenerateFriction(frictCoeff);
             base.Update();
@@ -71,5 +80,13 @@ public class Enemy : Vehicle
     public override Vector3 Separation()
     {
         return Vector3.zero;
+    }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(other.tag == "Player")
+        {
+            inAttackRange = true;
+        }
     }
 }
