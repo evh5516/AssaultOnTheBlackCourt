@@ -13,13 +13,11 @@ public class Enemy : Vehicle
     private float colorTicker;
     private bool inAttackRange;
     private GameObject dresden;
-    public float attackTimer;
     #endregion
 
     // Start is called before the first frame update
     void Start()
     {
-        attackTimer = 0;
         health = 100;
         obstacles = new List<GameObject>();
 
@@ -56,18 +54,6 @@ public class Enemy : Vehicle
                 Destroy(gameObject);
             }
 
-            if (inAttackRange == true)
-            {
-                if (attackTimer < 1)
-                {
-                    attackTimer += Time.deltaTime;
-                }
-                else if (attackTimer >= 1)
-                {
-                    dresden.GetComponent<Dresden>().Health -= 25;
-                    attackTimer = 0;
-                }
-            }
 
             ultimateForce += ObstacleAvoidance();
             GenerateFriction(frictCoeff);
@@ -92,19 +78,5 @@ public class Enemy : Vehicle
         return Vector3.zero;
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            inAttackRange = true;
-        }
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            inAttackRange = false;
-        }
-    }
+    
 }
