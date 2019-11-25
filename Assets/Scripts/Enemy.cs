@@ -82,11 +82,5 @@ public class Enemy : Vehicle
         return Vector3.zero;
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            inAttackRange = true;
-        }
-    }
+    
 }

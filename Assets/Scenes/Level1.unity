@@ -45367,6 +45367,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 850933490907723304, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2635695600006222092, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: m_FlipX
@@ -45521,7 +45526,8 @@ PrefabInstance:
       propertyPath: pathNodes.Array.data[1]
       value: 
       objectReference: {fileID: 2011331151}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 590892d7f1297374982701bc52df2ef1, type: 3}
 --- !u!1001 &7435148704372317564
 PrefabInstance:
