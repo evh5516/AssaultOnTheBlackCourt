@@ -56,10 +56,6 @@ public class Enemy : Vehicle
                 Destroy(gameObject);
             }
 
-            if (inAttackRange == true)
-            {
-                dresden.GetComponent<Dresden>().Health -= 50;
-            }
 
             //triggeredObstacles.Clear(); 
             ultimateForce = Vector3.zero;
@@ -97,11 +93,5 @@ public class Enemy : Vehicle
         return Vector3.zero;
     }
 
-    public void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "Player")
-        {
-            inAttackRange = true;
-        }
-    }
+    
 }

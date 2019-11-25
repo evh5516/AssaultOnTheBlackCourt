@@ -22,6 +22,11 @@ public class Dresden : Vehicle
 
             OrientSprite();
         }
+
+        if (health <= 0)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+        }
     }
 
     public override void CalcSteeringForces()

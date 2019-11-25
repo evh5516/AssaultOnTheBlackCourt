@@ -69,6 +69,7 @@ MonoBehaviour:
   wanderStrength: 0
   health: 100
   MAX_HEALTH: 100
+  activePickups: []
 --- !u!114 &2580545362204381746
 MonoBehaviour:
   m_ObjectHideFlags: 0
