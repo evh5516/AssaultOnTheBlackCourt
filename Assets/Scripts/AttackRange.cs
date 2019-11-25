@@ -31,11 +31,19 @@ public class AttackRange : MonoBehaviour
         }
     }
 
-    public void OnTriggerEnter(Collider obj)
+    public void OnTriggerEnter(Collider other)
     {
-        if (obj.tag == "Player")
+        if (other.tag == "Player")
         {
             inAttackRange = true;
+        }
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            inAttackRange = false;
         }
     }
 }
