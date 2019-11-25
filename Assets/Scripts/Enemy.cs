@@ -30,6 +30,8 @@ public class Enemy : Vehicle
             obstacles.Add(wall);
 
         dresden = GameObject.FindWithTag("Player");
+
+        triggeredObstacles = new List<int>(); 
     }
 
     // Update is called once per frame
@@ -59,21 +61,34 @@ public class Enemy : Vehicle
                 dresden.GetComponent<Dresden>().Health -= 50;
             }
 
-            ultimateForce += ObstacleAvoidance();
-            GenerateFriction(frictCoeff);
+            //triggeredObstacles.Clear(); 
+            ultimateForce = Vector3.zero;
+
+            ultimateForce += ObstacleAvoidance() * 2;
+
+            Debug.Log(ultimateForce); 
+            //GenerateFriction(frictCoeff);
             base.Update();
         }
     }
 
     public override void CalcSteeringForces()
     {
+
         if (pathNodes != null && pathNodes.Count != 0)
         {
-            ultimateForce += Seek(pathNodes[currentPathNode]);
+            if ((transform.position - dresden.transform.position).sqrMagnitude < 4)
+            {
+                ultimateForce += Pursuit(dresden) * 4; 
+            }
+            else
+            {
+                ultimateForce += Seek(pathNodes[currentPathNode]) * 2;
 
-            if ((transform.position - pathNodes[currentPathNode].transform.position).sqrMagnitude < 9) currentPathNode++;
+                if ((transform.position - pathNodes[currentPathNode].transform.position).sqrMagnitude < 1) currentPathNode++;
 
-            if (currentPathNode == pathNodes.Count) currentPathNode = 0;
+                if (currentPathNode == pathNodes.Count) currentPathNode = 0;
+            }
         }
     }
 

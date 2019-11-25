@@ -39,6 +39,9 @@ public abstract class Vehicle : MonoBehaviour {
     protected float health;
 
     protected bool paused;
+
+    public bool inTrigger;
+    public List<int> triggeredObstacles;
     #endregion
 
     #region Properties
@@ -229,23 +232,28 @@ public abstract class Vehicle : MonoBehaviour {
 
         for (int i = 0; i < obstacles.Count; i++)
         {
-            Vector3 vToC = obstacles[i].transform.position - transform.position;
-            if (Vector3.Dot(vToC,transform.forward) < 0)
-            {
-                continue;
-            }
+            Vector3 vToC = new Vector3(obstacles[i].transform.position.x, obstacles[i].transform.position.y, 0) - transform.position;
+            //if (Vector3.Dot(vToC,transform.up) < 0)
+            //{
+            //    continue;
+            //}
 
-            if (vToC.sqrMagnitude > Mathf.Pow(safeRadius, 2))
-            {
-                continue;
-            }
+            //if (vToC.sqrMagnitude > Mathf.Pow(safeRadius, 2))
+            //{
+            //    continue;
+            //}
 
             float rightProj = Vector3.Dot(vToC, transform.right);
 
-            if (Mathf.Abs(rightProj) > (radius + obstacles[i].GetComponent<Obstacle>().radius))
+            //if (Mathf.Abs(rightProj) > (radius + obstacles[i].GetComponent<Obstacle>().radius))
+
+            if (!inTrigger)
             {
                 continue;
             }
+
+            Debug.Log(obstacles[i].GetComponent<Obstacle>().obstacleIndex); 
+            if (!triggeredObstacles.Contains(i)) continue; 
 
             Debug.DrawLine(transform.position, obstacles[i].transform.position, Color.black);
 
