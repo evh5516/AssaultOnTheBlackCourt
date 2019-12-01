@@ -33,7 +33,7 @@ public class AttackRange : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "player")
+        if (dresden.GetComponent<BoxCollider2D>() == other)
         {
             Debug.Log("entered");
         }
@@ -45,7 +45,7 @@ public class AttackRange : MonoBehaviour
         //{
         //    inAttackRange = false;
         //}
-        if (other.tag == "player")
+        if (dresden.GetComponent<BoxCollider2D>() == other)
         {
             Debug.Log("exited");
         }
