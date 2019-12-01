@@ -252,7 +252,7 @@ public abstract class Vehicle : MonoBehaviour {
                 continue;
             }
 
-            Debug.Log(obstacles[i].GetComponent<Obstacle>().obstacleIndex); 
+            //Debug.Log(obstacles[i].GetComponent<Obstacle>().obstacleIndex); 
             if (!triggeredObstacles.Contains(i)) continue; 
 
             Debug.DrawLine(transform.position, obstacles[i].transform.position, Color.black);

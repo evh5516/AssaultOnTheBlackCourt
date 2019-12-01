@@ -13,11 +13,14 @@ public class Enemy : Vehicle
     private float colorTicker;
     private bool inAttackRange;
     private GameObject dresden;
-    #endregion
+    private float attackRange;
+    private float distance;
+#endregion
 
-    // Start is called before the first frame update
-    void Start()
+// Start is called before the first frame update
+void Start()
     {
+        attackRange = 1.5f;
         health = 100;
         obstacles = new List<GameObject>();
 
@@ -56,13 +59,20 @@ public class Enemy : Vehicle
                 Destroy(gameObject);
             }
 
+            distance = Vector3.Distance(transform.position, dresden.transform.position);
+
+            if (distance < attackRange)
+            {
+                dresden.GetComponent<Dresden>().Health -= 25;
+                Debug.Log("Damage Dealt");
+            }
 
             //triggeredObstacles.Clear(); 
             ultimateForce = Vector3.zero;
 
             ultimateForce += ObstacleAvoidance() * 2;
 
-            Debug.Log(ultimateForce); 
+            //Debug.Log(ultimateForce); 
             //GenerateFriction(frictCoeff);
             base.Update();
         }
