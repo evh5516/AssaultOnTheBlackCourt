@@ -33,14 +33,21 @@ public class AttackRange : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D other)
     {
-        Destroy(other.gameObject);
+        if (other.tag == "player")
+        {
+            Debug.Log("entered");
+        }
     }
 
     public void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "Player")
+        //if (other.tag == "Player")
+        //{
+        //    inAttackRange = false;
+        //}
+        if (other.tag == "player")
         {
-            inAttackRange = false;
+            Debug.Log("exited");
         }
     }
 }
