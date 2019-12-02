@@ -14,6 +14,17 @@ public class SpellCast : MonoBehaviour
 
     public GameObject dresden; 
 
+
+    public float HoldStrength
+    {
+        get { return holdStrength; }
+    }
+
+    public List<float> PowerLimits
+    {
+        get { return powerLimits; }
+    }
+
     // Start is called before the first frame update
     void Start()
     {
