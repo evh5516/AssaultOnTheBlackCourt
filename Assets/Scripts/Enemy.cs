@@ -15,6 +15,7 @@ public class Enemy : Vehicle
     private GameObject dresden;
     private float attackRange;
     private float distance;
+    private float attackTime;
 #endregion
 
 // Start is called before the first frame update
@@ -63,8 +64,22 @@ void Start()
 
             if (distance < attackRange)
             {
-                dresden.GetComponent<Dresden>().Health -= 25;
-                Debug.Log("Damage Dealt");
+                if (attackTime < 1.0f)
+                {
+                    attackTime += Time.deltaTime;
+                }
+                else if (attackTime >= 1.0f)
+                {
+
+                    dresden.GetComponent<Dresden>().Health -= 25;
+                    if (dresden.GetComponent<Dresden>().Health <= 0)
+                    {
+                        dresden.GetComponent<Dresden>().Health = 0;
+                        Destroy(dresden);
+                    }
+                    attackTime = 0.0f;
+                    Debug.Log("Damage Dealt");
+                }
             }
 
             //triggeredObstacles.Clear(); 
