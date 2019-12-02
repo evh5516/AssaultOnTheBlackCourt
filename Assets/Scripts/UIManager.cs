@@ -16,7 +16,9 @@ public class UIManager : MonoBehaviour
     private Canvas pauseCanvas;
     private bool paused;
     [SerializeField]
-    private Slider healthSlider; 
+    private Slider healthSlider;
+    [SerializeField]
+    private Slider chargeBar;
 
     // Use this for initialization
     void Start()
@@ -46,6 +48,7 @@ public class UIManager : MonoBehaviour
             }
 
             healthSlider.value = player.GetComponent<Dresden>().Health / player.GetComponent<Dresden>().MAX_HEALTH;
+            chargeBar.value = player.GetComponent<SpellCast>().HoldStrength / player.GetComponent<SpellCast>().PowerLimits[1];
         }
     }
 
