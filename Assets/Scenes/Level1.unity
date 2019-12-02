@@ -85512,6 +85512,7 @@ MonoBehaviour:
   enemies: []
   pauseCanvas: {fileID: 683146155}
   healthSlider: {fileID: 555865610}
+  chargeBar: {fileID: 1996776839}
 --- !u!1 &1303316917
 GameObject:
   m_ObjectHideFlags: 0
@@ -89246,6 +89247,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1996776839 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3032347939560964243, guid: e81c388fc508694449064abecd463758,
+    type: 3}
+  m_PrefabInstance: {fileID: 850933489868774079}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1998021149
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89917,6 +89930,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1237200820445514198, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 850933490907723304, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: m_Name

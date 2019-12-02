@@ -49,6 +49,21 @@ public class UIManager : MonoBehaviour
 
             healthSlider.value = player.GetComponent<Dresden>().Health / player.GetComponent<Dresden>().MAX_HEALTH;
             chargeBar.value = player.GetComponent<SpellCast>().HoldStrength / player.GetComponent<SpellCast>().PowerLimits[1];
+            Image[] tempComponents = chargeBar.GetComponentsInChildren<Image>();
+            if (chargeBar.value >= 0.5f && chargeBar.value < 1.0f)
+            { 
+                tempComponents[0].color = new Color(0, 1, 0, 0.5f);
+                tempComponents[1].color = Color.green;
+            }
+            else if (chargeBar.value < 0.5f)
+            {
+                tempComponents[0].color = new Color(0, 1, 1, 0.5f);
+                tempComponents[1].color = Color.cyan;
+            }
+            else
+            {
+                tempComponents[1].color = Color.yellow;
+            }
         }
     }
 

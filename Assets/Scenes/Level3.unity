@@ -2495,6 +2495,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1237200820445514198, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 850933490907723304, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: m_Name
@@ -66901,6 +66906,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1539413114}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1562735087 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3032347939560964243, guid: e81c388fc508694449064abecd463758,
+    type: 3}
+  m_PrefabInstance: {fileID: 393835088}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1571450863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68499,9 +68516,9 @@ GameObject:
   - component: {fileID: 1794337205}
   - component: {fileID: 1794337204}
   - component: {fileID: 1794337203}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Wall
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123563,6 +123580,7 @@ MonoBehaviour:
   enemies: []
   pauseCanvas: {fileID: 504892895}
   healthSlider: {fileID: 1091264124}
+  chargeBar: {fileID: 1562735087}
 --- !u!114 &1895610190
 MonoBehaviour:
   m_ObjectHideFlags: 0
