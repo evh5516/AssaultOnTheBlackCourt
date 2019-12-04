@@ -48,7 +48,9 @@ public class Projectile : MonoBehaviour
     {
         timer += Time.deltaTime;
 
-        transform.Translate(velocity * Time.deltaTime); 
+        //transform.Translate(velocity * Time.deltaTime);
+        transform.position += velocity * Time.deltaTime;
+        transform.right = velocity.normalized;
 
         if (timer == 10)
         {
