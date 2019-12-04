@@ -394,6 +394,7 @@ MonoBehaviour:
   enemies: []
   pauseCanvas: {fileID: 764308514}
   healthSlider: {fileID: 2066322958}
+  chargeBar: {fileID: 464246734}
 --- !u!81 &389522166
 AudioListener:
   m_ObjectHideFlags: 0
@@ -617,6 +618,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 447649785}
   m_CullTransparentMesh: 0
+--- !u!114 &464246734 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3032347939560964243, guid: e81c388fc508694449064abecd463758,
+    type: 3}
+  m_PrefabInstance: {fileID: 1074618720}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -113659843, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &509869546 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 850933490907723304, guid: e81c388fc508694449064abecd463758,
@@ -1462,6 +1475,11 @@ PrefabInstance:
         type: 3}
       propertyPath: health
       value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1237200820445514198, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e81c388fc508694449064abecd463758, type: 3}

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : Vehicle
 {
@@ -75,7 +76,9 @@ void Start()
                     if (dresden.GetComponent<Dresden>().Health <= 0)
                     {
                         dresden.GetComponent<Dresden>().Health = 0;
+                        SceneManager.LoadScene("Credits");
                         Destroy(dresden);
+                        return;
                     }
                     attackTime = 0.0f;
                     Debug.Log("Damage Dealt");
