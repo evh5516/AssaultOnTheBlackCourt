@@ -7,7 +7,6 @@ TagManager:
   - Obstacle
   - Wall
   - Enemy
-  - Pickup
   layers:
   - Default
   - TransparentFX
@@ -24,7 +23,7 @@ TagManager:
   - Enemy
   - 
   - Healing Tile
-  - Minimap
+  - 
   - 
   - 
   - 
