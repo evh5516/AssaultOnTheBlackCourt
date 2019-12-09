@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Enemy : Vehicle
 {
@@ -21,6 +22,7 @@ public class Enemy : Vehicle
 // Start is called before the first frame update
 void Start()
     {
+        gameObject.GetComponent<Animator>().SetBool("Moving", true); 
         attackRange = 1.5f;
         health = 100;
         obstacles = new List<GameObject>();
@@ -75,7 +77,9 @@ void Start()
                     if (dresden.GetComponent<Dresden>().Health <= 0)
                     {
                         dresden.GetComponent<Dresden>().Health = 0;
+                        SceneManager.LoadScene("Credits");
                         Destroy(dresden);
+                        return;
                     }
                     attackTime = 0.0f;
                     Debug.Log("Damage Dealt");
@@ -90,6 +94,8 @@ void Start()
             //Debug.Log(ultimateForce); 
             //GenerateFriction(frictCoeff);
             base.Update();
+
+            OrientSprite(); 
         }
     }
 
@@ -118,5 +124,14 @@ void Start()
         return Vector3.zero;
     }
 
-    
+    private void OrientSprite()
+    {
+        bool flip = gameObject.GetComponentInChildren<SpriteRenderer>().flipX;
+        float dot = Vector3.Dot(direction, transform.right);
+
+        if (dot < 0) flip = true;
+        else if (dot > 0) flip = false;
+
+        gameObject.GetComponentInChildren<SpriteRenderer>().flipX = flip;
+    }
 }
