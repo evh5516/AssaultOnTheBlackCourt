@@ -22,6 +22,7 @@ public class Enemy : Vehicle
 // Start is called before the first frame update
 void Start()
     {
+        gameObject.GetComponent<Animator>().SetBool("Moving", true); 
         attackRange = 1.5f;
         health = 100;
         obstacles = new List<GameObject>();
@@ -93,6 +94,8 @@ void Start()
             //Debug.Log(ultimateForce); 
             //GenerateFriction(frictCoeff);
             base.Update();
+
+            OrientSprite(); 
         }
     }
 
@@ -121,5 +124,14 @@ void Start()
         return Vector3.zero;
     }
 
-    
+    private void OrientSprite()
+    {
+        bool flip = gameObject.GetComponentInChildren<SpriteRenderer>().flipX;
+        float dot = Vector3.Dot(direction, transform.right);
+
+        if (dot < 0) flip = true;
+        else if (dot > 0) flip = false;
+
+        gameObject.GetComponentInChildren<SpriteRenderer>().flipX = flip;
+    }
 }

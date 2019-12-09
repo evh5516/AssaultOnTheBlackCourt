@@ -25,7 +25,7 @@ public class Dresden : Vehicle
 
         if (health <= 0)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = Color.blue;
+            gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
         }
     }
 

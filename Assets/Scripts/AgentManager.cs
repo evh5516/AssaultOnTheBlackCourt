@@ -11,6 +11,8 @@ public class AgentManager : MonoBehaviour {
     public bool showDebugLines;
 
     public GameObject[] obstacles;
+
+    public GameObject dataManagerPrefab; 
     #endregion
 
     // Use this for initialization
@@ -18,8 +20,22 @@ public class AgentManager : MonoBehaviour {
     {
         obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
 
+        if (GameObject.Find("DataManager") == null && GameObject.Find("DataManager(Clone)") == null)
+        {
+            Instantiate(dataManagerPrefab);
+        }
+
+        try
+        {
+            dresden.GetComponent<Dresden>().Health = GameObject.Find("DataManager").GetComponent<DataManager>().DresdenHealth; 
+        }
+        catch
+        {
+            dresden.GetComponent<Dresden>().Health = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().DresdenHealth;
+        }
+
         //CreateObjects();
-	}
+    }
 	
 	// Update is called once per frame
 	void Update ()
