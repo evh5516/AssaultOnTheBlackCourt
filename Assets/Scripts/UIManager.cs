@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     private GameObject player;        //Public variable to store a reference to the player game object
     public List<GameObject> enemies; 
     private Vector3 offset;            //Private variable to store the offset distance between the player and camera
+    
     [SerializeField]
     private Canvas pauseCanvas;
     private bool paused;
@@ -19,6 +20,24 @@ public class UIManager : MonoBehaviour
     private Slider healthSlider;
     [SerializeField]
     private Slider chargeBar;
+
+    [SerializeField]
+    private GameObject blankPickupPrefab;
+    
+    private Queue<(Pickup, GameObject)> activePickups = new Queue<(Pickup, GameObject)>();
+    
+    private Vector3[] pickupPositions = {
+        new Vector3(60, 20, 0),
+        new Vector3(115, 20, 0), 
+        new Vector3(170, 20, 0) 
+    };
+
+    private int nextPickupPos = 0; 
+
+    public Queue<(Pickup, GameObject)> ActivePickups
+    {
+        get { return activePickups; }
+    }
 
     // Use this for initialization
     void Start()
@@ -32,6 +51,22 @@ public class UIManager : MonoBehaviour
             
             foreach(GameObject e in temp)
                 enemies.Add(e); 
+        }
+
+        Queue<(Pickup, GameObject)> lastActivePickups = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().ActivePickups;
+        //try
+        //{
+        //    lastActivePickups = GameObject.Find("DataManager").GetComponent<DataManager>().ActivePickups;
+        //}
+        //catch
+        //{
+        //lastActivePickups = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().ActivePickups;
+        //}
+
+        for (int i = 0; i < lastActivePickups.Count; i++)
+        {
+            AddPickup(lastActivePickups.Dequeue().Item1);
+            i--;
         }
     }
 
@@ -110,5 +145,32 @@ public class UIManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit(); 
+    }
+
+    public void AddPickup(Pickup newPickup)
+    {
+        if (nextPickupPos == 3)
+        {
+            nextPickupPos = 0;
+            (Pickup, GameObject) removedPickup = activePickups.Dequeue();
+            removedPickup.Item1.ReverseEffect();
+            //player.GetComponent<Dresden>().activePickups.Dequeue(); 
+            Destroy(removedPickup.Item1.gameObject);
+            Destroy(removedPickup.Item2);
+        }
+        newPickup.gameObject.GetComponent<SpriteRenderer>().enabled = false;
+        newPickup.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        GameObject newPickupUI = Instantiate(blankPickupPrefab, pickupPositions[nextPickupPos], Quaternion.Euler(0, 0, 0));
+        newPickupUI.GetComponent<Image>().sprite = newPickup.gameObject.GetComponent<SpriteRenderer>().sprite;
+
+        newPickupUI.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 1);
+        newPickupUI.gameObject.transform.SetParent(GameObject.Find("ActiveItems").transform);
+
+        newPickup.pickedUp = true;
+
+        activePickups.Enqueue((newPickup, newPickupUI));
+
+        nextPickupPos++; 
     }
 }

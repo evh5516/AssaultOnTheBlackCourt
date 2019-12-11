@@ -2,14 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pickup : MonoBehaviour
+public abstract class Pickup : MonoBehaviour
 {
-    public delegate void PickupEffectDelegate();
-        
+    public bool pickedUp; 
+
     // Start is called before the first frame update
-    void Start()
+    protected void Start()
     {
-        
+        DontDestroyOnLoad(gameObject); 
     }
 
     // Update is called once per frame
@@ -23,8 +23,13 @@ public class Pickup : MonoBehaviour
         if (collision.gameObject.name == "Dresden")
         {
             GameObject dresden = collision.gameObject;
-            dresden.GetComponent<Dresden>().activePickups.Add(this); 
-            Destroy(gameObject); 
+            //dresden.GetComponent<Dresden>().activePickups.Enqueue(this);
+            Camera.main.GetComponent<UIManager>().AddPickup(this);
+            Effect(); 
         }
     }
+
+    public abstract void Effect();
+
+    public abstract void ReverseEffect(); 
 }

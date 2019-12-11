@@ -9,6 +9,7 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     private float dresdenHealth;
     private int score;
+    private Queue<(Pickup, GameObject)> activePickups = new Queue<(Pickup, GameObject)>(); 
     #endregion
 
     #region Properties
@@ -16,6 +17,11 @@ public class DataManager : MonoBehaviour
     {
         get { return dresdenHealth; }
         set { dresdenHealth = value; }
+    }
+    public Queue<(Pickup, GameObject)> ActivePickups
+    {
+        get { return activePickups; }
+        set { activePickups = value; }
     }
     #endregion
     void Start()

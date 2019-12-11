@@ -8,12 +8,14 @@ public class SpellCast : MonoBehaviour
     private float holdStrength;
 
     public List<float> powerLimits;
+    public List<float> damages; 
 
     public GameObject[] spellPrefabs;
     public int currentSpellIndex;
 
-    public GameObject dresden; 
+    public GameObject dresden;
 
+    public int powerDraining = 0; 
 
     public float HoldStrength
     {
@@ -80,6 +82,8 @@ public class SpellCast : MonoBehaviour
                     spell.GetComponent<Projectile>().Damage = 150;
                     holdStrength = 0;
                 }
+
+                dresden.GetComponent<Dresden>().Health -= (10 * powerDraining); 
             }
         }
     }

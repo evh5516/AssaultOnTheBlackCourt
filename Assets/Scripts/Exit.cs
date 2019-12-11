@@ -18,14 +18,30 @@ public class Exit : MonoBehaviour
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        try
+        GameObject dataManager = GameObject.Find("DataManager(Clone)");
+
+        //try
+        //{
+        //    dataManager = GameObject.Find("DataManager");
+        //}
+        //catch
+        //{
+        //    dataManager = GameObject.Find("DataManager(Clone)");
+        //}
+
+        dataManager.GetComponent<DataManager>().DresdenHealth = collision.gameObject.GetComponent<Dresden>().Health;
+        dataManager.GetComponent<DataManager>().ActivePickups = Camera.main.GetComponent<UIManager>().ActivePickups;
+
+        GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup"); 
+        
+        for (int i = 0; i < pickups.Length; i++)
         {
-            GameObject.Find("DataManager").GetComponent<DataManager>().DresdenHealth = collision.gameObject.GetComponent<Dresden>().Health;
+            if (!pickups[i].GetComponent<Pickup>().pickedUp)
+            {
+                Destroy(pickups[i]);
+            }
         }
-        catch
-        {
-            GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().DresdenHealth = collision.gameObject.GetComponent<Dresden>().Health;
-        }
+
         Camera.main.GetComponent<UIManager>().LoadNextLevel();
     }
 }
