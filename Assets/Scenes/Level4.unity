@@ -529,6 +529,8 @@ MonoBehaviour:
   pauseCanvas: {fileID: 1202249709}
   healthSlider: {fileID: 2066322958}
   chargeBar: {fileID: 1074618721}
+  blankPickupPrefab: {fileID: 2202582850577053092, guid: 19c61bf896533dc4da51abc127d83344,
+    type: 3}
 --- !u!81 &389522166
 AudioListener:
   m_ObjectHideFlags: 0

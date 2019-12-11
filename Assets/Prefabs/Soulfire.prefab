@@ -8,10 +8,11 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8653668019496962004}
+  - component: {fileID: 8402028973751502314}
   - component: {fileID: 8653668019496962007}
   - component: {fileID: 8653668019496962006}
-  - component: {fileID: 8653668019496962005}
+  - component: {fileID: 4487106344921919647}
+  - component: {fileID: 4613330583608706020}
   m_Layer: 8
   m_Name: Soulfire
   m_TagString: Pickup
@@ -19,20 +20,25 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8653668019496962004
-Transform:
+--- !u!224 &8402028973751502314
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8653668019496962001}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 17.25, y: -8.33, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 17.25, y: -8.33}
+  m_SizeDelta: {x: 9.82, y: 13}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &8653668019496962007
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -107,7 +113,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 11.010046, y: 12.999987}
   m_EdgeRadius: 0
---- !u!114 &8653668019496962005
+--- !u!222 &4487106344921919647
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8653668019496962001}
+  m_CullTransparentMesh: 0
+--- !u!114 &4613330583608706020
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -116,6 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8653668019496962001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60f8a4d4cf90f7048b8b7b365347bd2d, type: 3}
+  m_Script: {fileID: 11500000, guid: cf3f7f69fee077049a37b6b2d3365b5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pickedUp: 0

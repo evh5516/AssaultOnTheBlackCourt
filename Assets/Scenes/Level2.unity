@@ -1544,6 +1544,12 @@ MonoBehaviour:
   pauseCanvas: {fileID: 1907772767}
   healthSlider: {fileID: 1175350982}
   chargeBar: {fileID: 579538310}
+  blankPickupPrefab: {fileID: 2202582850577053092, guid: 19c61bf896533dc4da51abc127d83344,
+    type: 3}
+  pickupPositions:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
 --- !u!1001 &1109786932
 PrefabInstance:
   m_ObjectHideFlags: 0

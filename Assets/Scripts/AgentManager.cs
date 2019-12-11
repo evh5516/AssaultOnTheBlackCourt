@@ -25,14 +25,14 @@ public class AgentManager : MonoBehaviour {
             Instantiate(dataManagerPrefab);
         }
 
-        try
-        {
-            dresden.GetComponent<Dresden>().Health = GameObject.Find("DataManager").GetComponent<DataManager>().DresdenHealth; 
-        }
-        catch
-        {
-            dresden.GetComponent<Dresden>().Health = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().DresdenHealth;
-        }
+        //try
+        //{
+        //    dresden.GetComponent<Dresden>().Health = GameObject.Find("DataManager").GetComponent<DataManager>().DresdenHealth; 
+        //}
+        //catch
+        //{
+        dresden.GetComponent<Dresden>().Health = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().DresdenHealth;
+        //}
 
         //CreateObjects();
     }
