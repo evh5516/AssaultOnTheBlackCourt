@@ -23,6 +23,11 @@ public class DataManager : MonoBehaviour
         get { return activePickups; }
         set { activePickups = value; }
     }
+    public int Score
+    {
+        get { return score; }
+        set { score = value; }
+    }
     #endregion
     void Start()
     {

@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     private GameObject player;        //Public variable to store a reference to the player game object
     public List<GameObject> enemies; 
     private Vector3 offset;            //Private variable to store the offset distance between the player and camera
+    private int score = 0; 
     
     [SerializeField]
     private Canvas pauseCanvas;
@@ -20,6 +21,8 @@ public class UIManager : MonoBehaviour
     private Slider healthSlider;
     [SerializeField]
     private Slider chargeBar;
+    [SerializeField]
+    private Text scoreText;
 
     [SerializeField]
     private GameObject blankPickupPrefab;
@@ -37,6 +40,11 @@ public class UIManager : MonoBehaviour
     public Queue<(Pickup, GameObject)> ActivePickups
     {
         get { return activePickups; }
+    }
+    public int Score
+    {
+        get { return score; }
+        set { score = value; }
     }
 
     // Use this for initialization
@@ -68,6 +76,9 @@ public class UIManager : MonoBehaviour
             AddPickup(lastActivePickups.Dequeue().Item1);
             i--;
         }
+
+        score = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().Score;
+        scoreText.text = score.ToString();
     }
 
     private void Update()
@@ -172,5 +183,12 @@ public class UIManager : MonoBehaviour
         activePickups.Enqueue((newPickup, newPickupUI));
 
         nextPickupPos++; 
+    }
+
+    public void EnemyKilled(GameObject enemyKilled)
+    {
+        enemies.Remove(enemyKilled);
+        score += 10;
+        scoreText.text = score.ToString(); 
     }
 }

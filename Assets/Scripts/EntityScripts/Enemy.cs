@@ -65,7 +65,7 @@ void Start()
 
             if (health <= 0)
             {
-                Camera.main.GetComponent<UIManager>().enemies.Remove(gameObject);
+                Camera.main.GetComponent<UIManager>().EnemyKilled(gameObject);
                 Destroy(gameObject);
             }
 

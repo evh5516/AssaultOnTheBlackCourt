@@ -31,6 +31,7 @@ public class Exit : MonoBehaviour
 
         dataManager.GetComponent<DataManager>().DresdenHealth = collision.gameObject.GetComponent<Dresden>().Health;
         dataManager.GetComponent<DataManager>().ActivePickups = Camera.main.GetComponent<UIManager>().ActivePickups;
+        dataManager.GetComponent<DataManager>().Score = Camera.main.GetComponent<UIManager>().Score;
 
         GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup"); 
         
