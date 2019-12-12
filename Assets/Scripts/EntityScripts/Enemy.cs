@@ -17,12 +17,19 @@ public class Enemy : Vehicle
     private float attackRange;
     private float distance;
     private float attackTime;
+
+    [SerializeField]
+    private bool moving; 
 #endregion
 
 // Start is called before the first frame update
 void Start()
     {
-        gameObject.GetComponent<Animator>().SetBool("Moving", true); 
+        if (moving)
+        {
+            gameObject.GetComponent<Animator>().SetBool("Moving", true);
+        }
+
         attackRange = 1.5f;
         health = 100;
         obstacles = new List<GameObject>();
@@ -101,21 +108,23 @@ void Start()
 
     public override void CalcSteeringForces()
     {
-
-        if (pathNodes != null && pathNodes.Count != 0)
+        if ((transform.position - dresden.transform.position).sqrMagnitude < 4)
         {
-            if ((transform.position - dresden.transform.position).sqrMagnitude < 4)
-            {
-                ultimateForce += Pursuit(dresden) * 4; 
-            }
-            else
-            {
-                ultimateForce += Seek(pathNodes[currentPathNode]) * 2;
+            gameObject.GetComponent<Animator>().SetBool("Moving", true);
 
-                if ((transform.position - pathNodes[currentPathNode].transform.position).sqrMagnitude < 1) currentPathNode++;
+            ultimateForce += Pursuit(dresden) * 4;
+        }
+        else if (pathNodes != null && pathNodes.Count != 0)
+        {
+            ultimateForce += Seek(pathNodes[currentPathNode]) * 2;
 
-                if (currentPathNode == pathNodes.Count) currentPathNode = 0;
-            }
+            if ((transform.position - pathNodes[currentPathNode].transform.position).sqrMagnitude < 1) currentPathNode++;
+
+            if (currentPathNode == pathNodes.Count) currentPathNode = 0;
+        }
+        else if (!moving)
+        {
+            gameObject.GetComponent<Animator>().SetBool("Moving", false);
         }
     }
 
