@@ -28,7 +28,10 @@ public class Enemy : Vehicle
     private bool moving;
 
     [SerializeField]
-    private bool reversed; 
+    private bool reversed;
+
+    [SerializeField]
+    private bool isBoss; 
 #endregion
 
 // Start is called before the first frame update
@@ -75,6 +78,19 @@ void Start()
             if (health <= 0)
             {
                 Camera.main.GetComponent<UIManager>().EnemyKilled(gameObject);
+
+                if (isBoss)
+                {
+                    GameObject[] walls = GameObject.FindGameObjectsWithTag("EndWall"); 
+
+                    if (walls.Length != 0)
+                    {
+                        foreach (GameObject w in walls)
+                        {
+                            Destroy(w); 
+                        }
+                    }
+                }
                 Destroy(gameObject);
             }
 

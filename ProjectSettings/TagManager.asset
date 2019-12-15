@@ -8,6 +8,7 @@ TagManager:
   - Wall
   - Enemy
   - Pickup
+  - EndWall
   layers:
   - Default
   - TransparentFX
