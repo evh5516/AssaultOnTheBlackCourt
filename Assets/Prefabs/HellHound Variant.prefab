@@ -102,21 +102,6 @@ PrefabInstance:
       propertyPath: meleeDamage
       value: 35
       objectReference: {fileID: 0}
-    - target: {fileID: 7580135960411129349, guid: 590892d7f1297374982701bc52df2ef1,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.17218587
-      objectReference: {fileID: 0}
-    - target: {fileID: 7580135960411129349, guid: 590892d7f1297374982701bc52df2ef1,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.17218587
-      objectReference: {fileID: 0}
-    - target: {fileID: 7580135960411129349, guid: 590892d7f1297374982701bc52df2ef1,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.17218587
-      objectReference: {fileID: 0}
     - target: {fileID: 5855777283210538679, guid: 590892d7f1297374982701bc52df2ef1,
         type: 3}
       propertyPath: m_Sprite
@@ -183,5 +168,25 @@ PrefabInstance:
       propertyPath: m_Size.y
       value: 0.14442062
       objectReference: {fileID: 0}
+    - target: {fileID: 7580135960411129349, guid: 590892d7f1297374982701bc52df2ef1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.17218587
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580135960411129349, guid: 590892d7f1297374982701bc52df2ef1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.17218587
+      objectReference: {fileID: 0}
+    - target: {fileID: 7580135960411129349, guid: 590892d7f1297374982701bc52df2ef1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.17218587
+      objectReference: {fileID: 0}
+    - target: {fileID: 5899374333460080099, guid: 590892d7f1297374982701bc52df2ef1,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 672b7bdec9104064c948503cfcd7d68d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 590892d7f1297374982701bc52df2ef1, type: 3}
