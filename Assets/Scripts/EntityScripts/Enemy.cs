@@ -15,11 +15,16 @@ public class Enemy : Vehicle
     private bool inAttackRange;
     private GameObject dresden;
     private float attackRange;
+    [SerializeField]
+    private float agroRange; 
     private float distance;
     private float attackTime;
 
     [SerializeField]
-    private bool moving; 
+    private bool moving;
+
+    [SerializeField]
+    private bool reversed; 
 #endregion
 
 // Start is called before the first frame update
@@ -108,14 +113,17 @@ void Start()
 
     public override void CalcSteeringForces()
     {
-        if ((transform.position - dresden.transform.position).sqrMagnitude < 4)
+        if ((transform.position - dresden.transform.position).sqrMagnitude < agroRange)
         {
             gameObject.GetComponent<Animator>().SetBool("Moving", true);
+            gameObject.GetComponent<Animator>().SetBool("InRange", true);
 
             ultimateForce += Pursuit(dresden) * 4;
         }
         else if (pathNodes != null && pathNodes.Count != 0)
         {
+            gameObject.GetComponent<Animator>().SetBool("InRange", false);
+
             ultimateForce += Seek(pathNodes[currentPathNode]) * 2;
 
             if ((transform.position - pathNodes[currentPathNode].transform.position).sqrMagnitude < 1) currentPathNode++;
@@ -124,6 +132,8 @@ void Start()
         }
         else if (!moving)
         {
+            gameObject.GetComponent<Animator>().SetBool("InRange", false);
+
             gameObject.GetComponent<Animator>().SetBool("Moving", false);
         }
     }
@@ -138,8 +148,17 @@ void Start()
         bool flip = gameObject.GetComponentInChildren<SpriteRenderer>().flipX;
         float dot = Vector3.Dot(direction, transform.right);
 
-        if (dot < 0) flip = true;
-        else if (dot > 0) flip = false;
+        if (!reversed)
+        {
+            if (dot < 0) flip = true;
+            else if (dot > 0) flip = false;
+        }
+        else
+        {
+            if (dot < 0) flip = false;
+            else if (dot > 0) flip = true;
+        }
+
 
         gameObject.GetComponentInChildren<SpriteRenderer>().flipX = flip;
     }

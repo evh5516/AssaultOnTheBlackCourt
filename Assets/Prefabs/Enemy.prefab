@@ -142,6 +142,9 @@ MonoBehaviour:
   pathNodes: []
   currentPathNode: 0
   colorTicker: 0
+  agroRange: 4
+  moving: 0
+  reversed: 0
 --- !u!114 &8000264771957627880
 MonoBehaviour:
   m_ObjectHideFlags: 0
