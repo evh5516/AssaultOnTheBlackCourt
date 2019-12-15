@@ -6,6 +6,8 @@ public class Dresden : Vehicle
 {
     public int MAX_HEALTH;
     //public Queue<Pickup> activePickups = new Queue<Pickup>(); 
+    [SerializeField]
+    private float colorTicker;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +23,17 @@ public class Dresden : Vehicle
             base.Update();
 
             OrientSprite();
+
+            if (colorTicker >= 0.5f)
+            {
+                gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+                colorTicker = 0.0f;
+            }
+
+            if (gameObject.GetComponentInChildren<SpriteRenderer>().color == Color.red)
+            {
+                colorTicker += Time.deltaTime;
+            }
         }
 
         if (health <= 0)

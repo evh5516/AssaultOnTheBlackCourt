@@ -136,12 +136,17 @@ MonoBehaviour:
   currentAngle: 0
   previousAngle: 0
   wanderStrength: 0
-  health: 0
+  health: 100
   inTrigger: 0
   triggeredObstacles: 
   pathNodes: []
   currentPathNode: 0
   colorTicker: 0
+  agroRange: 4
+  ranged: 0
+  meleeDamage: 25
+  moving: 0
+  reversed: 0
 --- !u!114 &8000264771957627880
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -86765,7 +86765,7 @@ Transform:
   - {fileID: 72485844}
   - {fileID: 506779}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1839735485 &1418050713
 Tilemap:
@@ -87543,7 +87543,7 @@ PrefabInstance:
     - target: {fileID: 8402028973751502314, guid: 0a97e312e2a1d534baccd467f5b96ea6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 8402028973751502314, guid: 0a97e312e2a1d534baccd467f5b96ea6,
         type: 3}
@@ -88853,7 +88853,7 @@ Transform:
   - {fileID: 1231563666}
   - {fileID: 1173681333}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1915719018
 GameObject:
@@ -89965,6 +89965,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: idleAnim
+      value: 
+      objectReference: {fileID: 1934067034}
+    - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: shootAnim
+      value: 
+      objectReference: {fileID: 834932602}
+    - target: {fileID: 5589050163361979091, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8218888132036241868, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: m_RootOrder
@@ -90005,20 +90020,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -0.6000061
       objectReference: {fileID: 0}
-    - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
+    - target: {fileID: 4738741197240207806, guid: e81c388fc508694449064abecd463758,
         type: 3}
-      propertyPath: idleAnim
-      value: 
-      objectReference: {fileID: 1934067034}
-    - target: {fileID: 2580545362204381746, guid: e81c388fc508694449064abecd463758,
-        type: 3}
-      propertyPath: shootAnim
-      value: 
-      objectReference: {fileID: 834932602}
-    - target: {fileID: 5589050163361979091, guid: e81c388fc508694449064abecd463758,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1371329441617436359, guid: e81c388fc508694449064abecd463758,
         type: 3}
@@ -90044,11 +90049,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4738741197240207806, guid: e81c388fc508694449064abecd463758,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3189248978473309577, guid: e81c388fc508694449064abecd463758, type: 3}
@@ -90203,7 +90203,7 @@ PrefabInstance:
     - target: {fileID: 7435148705828164116, guid: b665fb960de5e4d4fb24d59e43f9efa1,
         type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7435148705828164116, guid: b665fb960de5e4d4fb24d59e43f9efa1,
         type: 3}

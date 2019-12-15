@@ -15,11 +15,20 @@ public class Enemy : Vehicle
     private bool inAttackRange;
     private GameObject dresden;
     private float attackRange;
+    [SerializeField]
+    private float agroRange;
+    [SerializeField]
+    private bool ranged; 
     private float distance;
     private float attackTime;
+    [SerializeField]
+    private float meleeDamage;
 
     [SerializeField]
-    private bool moving; 
+    private bool moving;
+
+    [SerializeField]
+    private bool reversed; 
 #endregion
 
 // Start is called before the first frame update
@@ -31,7 +40,7 @@ void Start()
         }
 
         attackRange = 1.5f;
-        health = 100;
+        //health = 100;
         obstacles = new List<GameObject>();
 
         GameObject[] desks = GameObject.FindGameObjectsWithTag("Obstacle");
@@ -71,7 +80,7 @@ void Start()
 
             distance = Vector3.Distance(transform.position, dresden.transform.position);
 
-            if (distance < attackRange)
+            if (distance < attackRange && !ranged)
             {
                 if (attackTime < 1.0f)
                 {
@@ -80,7 +89,7 @@ void Start()
                 else if (attackTime >= 1.0f)
                 {
 
-                    dresden.GetComponent<Dresden>().Health -= 25;
+                    dresden.GetComponent<Dresden>().Health -= meleeDamage;
                     if (dresden.GetComponent<Dresden>().Health <= 0)
                     {
                         dresden.GetComponent<Dresden>().Health = 0;
@@ -89,7 +98,7 @@ void Start()
                         return;
                     }
                     attackTime = 0.0f;
-                    Debug.Log("Damage Dealt");
+                    //Debug.Log("Damage Dealt");
                 }
             }
 
@@ -102,29 +111,47 @@ void Start()
             //GenerateFriction(frictCoeff);
             base.Update();
 
+            if (ranged && gameObject.GetComponent<SpellCast>().Active) direction = (dresden.transform.position - transform.position).normalized;
+
             OrientSprite(); 
         }
     }
 
     public override void CalcSteeringForces()
     {
-        if ((transform.position - dresden.transform.position).sqrMagnitude < 4)
+        if ((transform.position - dresden.transform.position).sqrMagnitude < agroRange)
         {
-            gameObject.GetComponent<Animator>().SetBool("Moving", true);
+            if (!ranged)
+            {
+                gameObject.GetComponent<Animator>().SetBool("Moving", true);
+                gameObject.GetComponent<Animator>().SetBool("InRange", true);
 
-            ultimateForce += Pursuit(dresden) * 4;
+                ultimateForce += Pursuit(dresden) * 4;
+            }
+            else
+            {
+                gameObject.GetComponent<SpellCast>().Active = true;
+            }
         }
         else if (pathNodes != null && pathNodes.Count != 0)
         {
+            gameObject.GetComponent<Animator>().SetBool("InRange", false);
+
             ultimateForce += Seek(pathNodes[currentPathNode]) * 2;
 
             if ((transform.position - pathNodes[currentPathNode].transform.position).sqrMagnitude < 1) currentPathNode++;
 
             if (currentPathNode == pathNodes.Count) currentPathNode = 0;
+
+            if (ranged) gameObject.GetComponent<SpellCast>().Active = false;
         }
         else if (!moving)
         {
+            gameObject.GetComponent<Animator>().SetBool("InRange", false);
+
             gameObject.GetComponent<Animator>().SetBool("Moving", false);
+
+            if (ranged) gameObject.GetComponent<SpellCast>().Active = false;
         }
     }
 
@@ -138,8 +165,17 @@ void Start()
         bool flip = gameObject.GetComponentInChildren<SpriteRenderer>().flipX;
         float dot = Vector3.Dot(direction, transform.right);
 
-        if (dot < 0) flip = true;
-        else if (dot > 0) flip = false;
+        if (!reversed)
+        {
+            if (dot < 0) flip = true;
+            else if (dot > 0) flip = false;
+        }
+        else
+        {
+            if (dot < 0) flip = false;
+            else if (dot > 0) flip = true;
+        }
+
 
         gameObject.GetComponentInChildren<SpriteRenderer>().flipX = flip;
     }
