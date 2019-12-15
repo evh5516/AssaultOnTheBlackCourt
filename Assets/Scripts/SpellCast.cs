@@ -15,7 +15,11 @@ public class SpellCast : MonoBehaviour
 
     public GameObject dresden;
 
-    public int powerDraining = 0; 
+    public int powerDraining = 0;
+
+    public GameObject idleAnim;
+    public GameObject shootAnim;
+    private float shootTime = 0.0f;
 
     public float HoldStrength
     {
@@ -83,7 +87,23 @@ public class SpellCast : MonoBehaviour
                     holdStrength = 0;
                 }
 
-                dresden.GetComponent<Dresden>().Health -= (10 * powerDraining); 
+                dresden.GetComponent<Dresden>().Health -= (10 * powerDraining);
+
+                //set animation
+                idleAnim.SetActive(false);
+                shootAnim.SetActive(true);
+                shootTime += Time.deltaTime;
+            }
+
+            if (shootTime < 0.3f && shootTime != 0.0f)
+            {
+                shootTime += Time.deltaTime;
+            }
+            else
+            {
+                shootTime = 0.0f;
+                idleAnim.SetActive(true);
+                shootAnim.SetActive(false);
             }
         }
     }
