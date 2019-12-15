@@ -87,6 +87,21 @@ PrefabInstance:
       propertyPath: reversed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5786958316331309849, guid: 590892d7f1297374982701bc52df2ef1,
+        type: 3}
+      propertyPath: health
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786958316331309849, guid: 590892d7f1297374982701bc52df2ef1,
+        type: 3}
+      propertyPath: damage
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 5786958316331309849, guid: 590892d7f1297374982701bc52df2ef1,
+        type: 3}
+      propertyPath: meleeDamage
+      value: 35
+      objectReference: {fileID: 0}
     - target: {fileID: 7580135960411129349, guid: 590892d7f1297374982701bc52df2ef1,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -123,6 +138,11 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: d61045803c5728e44a9250883680f0ad, type: 2}
+    - target: {fileID: 6262475765571033977, guid: 590892d7f1297374982701bc52df2ef1,
+        type: 3}
+      propertyPath: m_Mass
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 2212800221951384109, guid: 590892d7f1297374982701bc52df2ef1,
         type: 3}
       propertyPath: m_SpriteTilingProperty.oldSize.x

@@ -13,6 +13,9 @@ public class Projectile : MonoBehaviour
     private float timer;
 
     [SerializeField]
+    private bool enemySpell; 
+
+    [SerializeField]
     private int damage;
     #endregion
 
@@ -38,7 +41,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         timer = 0;
-        Physics2D.IgnoreLayerCollision(8, 9);
+
         Physics2D.IgnoreLayerCollision(9, 10);
         Physics2D.IgnoreLayerCollision(0, 9); 
     }
@@ -67,6 +70,9 @@ public class Projectile : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (!enemySpell && collision.gameObject.layer == 8) return;
+        if (enemySpell && collision.gameObject.layer == 12) return;
+
         //Debug.Log(collision.gameObject.tag);
 
         if (collision.gameObject.tag == "Wall")
@@ -74,10 +80,17 @@ public class Projectile : MonoBehaviour
             DestroySpell();
             return;
         }
-        else if (collision.gameObject.tag == "Enemy")
+        else if (collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player")
         {
-            collision.gameObject.GetComponent<Enemy>().Health -= damage;
-            collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            collision.gameObject.GetComponent<Vehicle>().Health -= damage;
+            try
+            {
+                collision.gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+            }
+            catch
+            {
+                collision.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.red;
+            }
             DestroySpell();
             return;
         }
