@@ -64,7 +64,7 @@ public class Projectile : MonoBehaviour
     public void DestroySpell()
     {
         //Debug.Log("Destroy"); 
-        Camera.main.GetComponent<CollisionManager>().projectiles.Remove(gameObject);
+        //Camera.main.GetComponent<CollisionManager>().projectiles.Remove(gameObject);
         Destroy(gameObject);
     }
 

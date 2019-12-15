@@ -30,9 +30,9 @@ public class UIManager : MonoBehaviour
     private Queue<(Pickup, GameObject)> activePickups = new Queue<(Pickup, GameObject)>();
     
     private Vector3[] pickupPositions = {
-        new Vector3(60, 20, 0),
-        new Vector3(115, 20, 0), 
-        new Vector3(170, 20, 0) 
+        new Vector3(-100, 0, 0),
+        new Vector3(0, 0, 0), 
+        new Vector3(100, 0, 0) 
     };
 
     private int nextPickupPos = 0; 
@@ -45,6 +45,11 @@ public class UIManager : MonoBehaviour
     {
         get { return score; }
         set { score = value; }
+    }
+    public bool Game
+    {
+        get { return game; }
+        set { game = value; }
     }
 
     // Use this for initialization
@@ -177,6 +182,7 @@ public class UIManager : MonoBehaviour
 
         newPickupUI.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 1);
         newPickupUI.gameObject.transform.SetParent(GameObject.Find("ActiveItems").transform);
+        newPickupUI.gameObject.transform.localPosition = pickupPositions[nextPickupPos];
 
         newPickup.pickedUp = true;
 

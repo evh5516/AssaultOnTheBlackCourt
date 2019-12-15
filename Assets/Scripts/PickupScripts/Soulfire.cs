@@ -29,6 +29,22 @@ public class Soulfire : Pickup
         }
 
         dresden.GetComponent<SpellCast>().powerDraining += 1;
+
+        //changing particles
+        ParticleSystem.ShapeModule shape = gameObject.GetComponentInChildren<ParticleSystem>().shape;
+        shape.angle = 30.99963f;
+        ParticleSystem.MainModule main = gameObject.GetComponentInChildren<ParticleSystem>().main;
+        main.startSize = 0.1f;
+
+        //setting parent
+        gameObject.GetComponentInChildren<ParticleSystem>().gameObject.transform.parent = dresden.transform;
+
+        //setting local position
+        ParticleSystem[] pss = dresden.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in pss)
+        {
+            ps.gameObject.transform.localPosition = new Vector3(-0.066f, -0.485f, 0);
+        }
     }
 
     public override void ReverseEffect()
@@ -41,5 +57,16 @@ public class Soulfire : Pickup
         }
 
         dresden.GetComponent<SpellCast>().powerDraining -= 1;
+
+        //setting local position
+        ParticleSystem[] pss = dresden.GetComponentsInChildren<ParticleSystem>();
+        for (int i = 0; i < pss.Length; i++)
+        {
+            if (pss[i].gameObject.name == "SoulfireParticles")
+            {
+                Destroy(pss[i].gameObject);
+                return;
+            }
+        }
     }
 }

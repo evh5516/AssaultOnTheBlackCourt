@@ -110,6 +110,7 @@ void Start()
                     {
                         dresden.GetComponent<Dresden>().Health = 0;
                         SceneManager.LoadScene("Credits");
+                        Camera.main.GetComponent<UIManager>().Game = false;
                         Destroy(dresden);
                         return;
                     }
