@@ -16,6 +16,8 @@ public class UIManager : MonoBehaviour
     
     [SerializeField]
     private Canvas pauseCanvas;
+    [SerializeField]
+    private Canvas almanacCanvas;
     private bool paused;
     [SerializeField]
     private Slider healthSlider;
@@ -144,6 +146,7 @@ public class UIManager : MonoBehaviour
             e.GetComponent<Enemy>().Paused = true;
 
         pauseCanvas.enabled = true;
+        almanacCanvas.enabled = false;
 
         paused = true;
     }
@@ -157,6 +160,12 @@ public class UIManager : MonoBehaviour
         pauseCanvas.enabled = false;
 
         paused = false; 
+    }
+
+    public void AlmanacVisible()
+    {
+        pauseCanvas.enabled = false;
+        almanacCanvas.enabled = true;
     }
 
     public void QuitGame()
