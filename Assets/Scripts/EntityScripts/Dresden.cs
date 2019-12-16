@@ -9,6 +9,8 @@ public class Dresden : Vehicle
     //public Queue<Pickup> activePickups = new Queue<Pickup>(); 
     [SerializeField]
     private float colorTicker;
+    public GameObject runSprite;
+    public GameObject idleSprite;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +46,18 @@ public class Dresden : Vehicle
             Camera.main.GetComponent<UIManager>().Game = false;
             return;
         }
+
+        if(ultimateForce.magnitude != 0)
+        {
+            runSprite.SetActive(true);
+            idleSprite.SetActive(false);
+        }
+        else
+        {
+            runSprite.SetActive(false);
+            idleSprite.SetActive(true);
+        }
+
     }
 
     public override void CalcSteeringForces()

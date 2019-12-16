@@ -4,7 +4,8 @@ using UnityEngine;
 
 public abstract class Pickup : MonoBehaviour
 {
-    public bool pickedUp; 
+    public bool pickedUp;
+    public GameObject sprite;
 
     // Start is called before the first frame update
     protected void Start()
@@ -25,7 +26,8 @@ public abstract class Pickup : MonoBehaviour
             GameObject dresden = collision.gameObject;
             //dresden.GetComponent<Dresden>().activePickups.Enqueue(this);
             Camera.main.GetComponent<UIManager>().AddPickup(this);
-            Effect(); 
+            Effect();
+            sprite.SetActive(false);
         }
     }
 
