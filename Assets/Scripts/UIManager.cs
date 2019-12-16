@@ -128,6 +128,7 @@ public class UIManager : MonoBehaviour
 
     public void LoadNewScene(string sceneName)
     {
+        if (sceneName == "Level1") GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().Score = 0;
         SceneManager.LoadSceneAsync(sceneName);
     }
 

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Dresden : Vehicle
 {
@@ -39,6 +40,9 @@ public class Dresden : Vehicle
         if (health <= 0)
         {
             gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.blue;
+            SceneManager.LoadScene("Credits");
+            Camera.main.GetComponent<UIManager>().Game = false;
+            return;
         }
     }
 

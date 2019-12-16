@@ -106,14 +106,6 @@ void Start()
                 {
 
                     dresden.GetComponent<Dresden>().Health -= meleeDamage;
-                    if (dresden.GetComponent<Dresden>().Health <= 0)
-                    {
-                        dresden.GetComponent<Dresden>().Health = 0;
-                        SceneManager.LoadScene("Credits");
-                        Camera.main.GetComponent<UIManager>().Game = false;
-                        Destroy(dresden);
-                        return;
-                    }
                     attackTime = 0.0f;
                     //Debug.Log("Damage Dealt");
                 }
