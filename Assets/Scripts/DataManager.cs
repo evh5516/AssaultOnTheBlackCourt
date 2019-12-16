@@ -8,6 +8,8 @@ public class DataManager : MonoBehaviour
     #region Fields
     [SerializeField]
     private float dresdenHealth;
+    [SerializeField]
+    private AudioSource soundClip;
     private int score;
     private Queue<(Pickup, GameObject)> activePickups = new Queue<(Pickup, GameObject)>();
     private List<GameObject> dresdenParticles = new List<GameObject>();
@@ -45,5 +47,11 @@ public class DataManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void StopMusic(AudioClip clip)
+    {
+        soundClip.clip = clip;
+        soundClip.Stop();
     }
 }

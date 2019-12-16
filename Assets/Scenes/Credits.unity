@@ -713,9 +713,13 @@ MonoBehaviour:
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Hellhound: https://opengameart.org/content/hell-hound-character'
+  m_Text: "Hellhound: https://opengameart.org/content/hell-hound-character\n\nSounds:
+    \nFireball: https://freesound.org/people/JoelAudio/sounds/77691/\nButton Click
+    Sound: https://freesound.org/people/MastersDisaster/sounds/218115/\nMain Menu
+    Music: https://www.fesliyanstudios.com/royalty-free-music/download/a-world-in-trouble/294\nIn
+    Game Music: https://www.fesliyanstudios.com/royalty-free-music/download/undercover-spy-agent/332"
 --- !u!222 &876814202
 CanvasRenderer:
   m_ObjectHideFlags: 0
