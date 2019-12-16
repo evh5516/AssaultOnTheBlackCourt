@@ -22,7 +22,7 @@ MonoBehaviour:
   powerDraining: 0
   idleAnim: {fileID: 0}
   shootAnim: {fileID: 0}
-  enemy: 0
+  enemy: 1
 --- !u!1001 &3336968080761911788
 PrefabInstance:
   m_ObjectHideFlags: 0
