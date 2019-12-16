@@ -29,7 +29,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject blankPickupPrefab;
     
-    private Queue<(Pickup, GameObject)> activePickups = new Queue<(Pickup, GameObject)>();
+    private List<(Pickup, GameObject)> activePickups = new List<(Pickup, GameObject)>();
     
     private Vector3[] pickupPositions = {
         new Vector3(-100, 0, 0),
@@ -39,7 +39,7 @@ public class UIManager : MonoBehaviour
 
     private int nextPickupPos = 0; 
 
-    public Queue<(Pickup, GameObject)> ActivePickups
+    public List<(Pickup, GameObject)> ActivePickups
     {
         get { return activePickups; }
     }
@@ -68,13 +68,12 @@ public class UIManager : MonoBehaviour
                 enemies.Add(e); 
         }
 
-        Queue<(Pickup, GameObject)> lastActivePickups = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().ActivePickups;
+        List<(Pickup, GameObject)> lastActivePickups = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().ActivePickups;
         List<GameObject> lastParticles = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().DresdenParticles; 
 
         for (int i = 0; i < lastActivePickups.Count; i++)
         {
-            AddPickup(lastActivePickups.Dequeue().Item1);
-            i--;
+            AddPickup(lastActivePickups[i].Item1);
         }
 
         for (int i = 0; i < lastParticles.Count; i++)
@@ -178,7 +177,8 @@ public class UIManager : MonoBehaviour
         if (nextPickupPos == 3)
         {
             nextPickupPos = 0;
-            (Pickup, GameObject) removedPickup = activePickups.Dequeue();
+            (Pickup, GameObject) removedPickup = activePickups[0];
+            activePickups.RemoveAt(0);
             removedPickup.Item1.ReverseEffect();
             //player.GetComponent<Dresden>().activePickups.Dequeue(); 
             Destroy(removedPickup.Item1.gameObject);
@@ -191,6 +191,7 @@ public class UIManager : MonoBehaviour
 
         GameObject newPickupUI = Instantiate(blankPickupPrefab, pickupPositions[nextPickupPos], Quaternion.Euler(0, 0, 0));
         newPickupUI.GetComponent<Image>().sprite = newPickup.gameObject.GetComponent<SpriteRenderer>().sprite;
+        newPickupUI.GetComponent<PickupUI>().linkedPickup = newPickup; 
 
         newPickupUI.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 1);
         newPickupUI.gameObject.transform.SetParent(GameObject.Find("ActiveItems").transform);
@@ -198,7 +199,7 @@ public class UIManager : MonoBehaviour
 
         newPickup.pickedUp = true;
 
-        activePickups.Enqueue((newPickup, newPickupUI));
+        activePickups.Add((newPickup, newPickupUI));
 
         nextPickupPos++; 
     }
