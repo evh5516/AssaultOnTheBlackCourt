@@ -26,7 +26,7 @@ public abstract class Pickup : MonoBehaviour
             GameObject dresden = collision.gameObject;
             //dresden.GetComponent<Dresden>().activePickups.Enqueue(this);
             Camera.main.GetComponent<UIManager>().AddPickup(this);
-            Effect();
+            //Effect();
             sprite.SetActive(false);
         }
     }

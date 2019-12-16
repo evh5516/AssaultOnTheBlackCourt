@@ -9,7 +9,8 @@ public class DataManager : MonoBehaviour
     [SerializeField]
     private float dresdenHealth;
     private int score;
-    private Queue<(Pickup, GameObject)> activePickups = new Queue<(Pickup, GameObject)>(); 
+    private Queue<(Pickup, GameObject)> activePickups = new Queue<(Pickup, GameObject)>();
+    private List<GameObject> dresdenParticles = new List<GameObject>();
     #endregion
 
     #region Properties
@@ -28,10 +29,16 @@ public class DataManager : MonoBehaviour
         get { return score; }
         set { score = value; }
     }
+    public List<GameObject> DresdenParticles
+    {
+        get { return dresdenParticles; }
+        set { dresdenParticles = value; }
+    }
     #endregion
     void Start()
     {
         DontDestroyOnLoad(gameObject);
+        DontDestroyOnLoad(Instantiate(new GameObject("DresdenParticles")));
     }
 
     // Update is called once per frame

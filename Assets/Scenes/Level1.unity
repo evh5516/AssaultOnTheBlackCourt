@@ -77723,7 +77723,7 @@ PrefabInstance:
     - target: {fileID: 3588163946142489088, guid: c5aecaa2423cc134db0a1c7b5ee70879,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3588163946142489088, guid: c5aecaa2423cc134db0a1c7b5ee70879,
         type: 3}
@@ -79092,7 +79092,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &259758977
 GameObject:
@@ -90405,7 +90405,7 @@ Transform:
   - {fileID: 703613114}
   - {fileID: 169906102}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &850933489868774079
 PrefabInstance:
@@ -90467,7 +90467,7 @@ PrefabInstance:
     - target: {fileID: 850933490907723301, guid: e81c388fc508694449064abecd463758,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1237200820445514198, guid: e81c388fc508694449064abecd463758,
         type: 3}
@@ -90584,10 +90584,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3561739781504890717, guid: e81c388fc508694449064abecd463758,
+    - target: {fileID: 4738741197240207806, guid: e81c388fc508694449064abecd463758,
         type: 3}
-      propertyPath: m_Enabled
-      value: 0
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1884273332377844883, guid: e81c388fc508694449064abecd463758,
         type: 3}
@@ -90623,6 +90623,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4063803969497581117, guid: e81c388fc508694449064abecd463758,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3189248978473309577, guid: e81c388fc508694449064abecd463758, type: 3}

@@ -67,19 +67,19 @@ public class UIManager : MonoBehaviour
         }
 
         Queue<(Pickup, GameObject)> lastActivePickups = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().ActivePickups;
-        //try
-        //{
-        //    lastActivePickups = GameObject.Find("DataManager").GetComponent<DataManager>().ActivePickups;
-        //}
-        //catch
-        //{
-        //lastActivePickups = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().ActivePickups;
-        //}
+        List<GameObject> lastParticles = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().DresdenParticles; 
 
         for (int i = 0; i < lastActivePickups.Count; i++)
         {
             AddPickup(lastActivePickups.Dequeue().Item1);
             i--;
+        }
+
+        for (int i = 0; i < lastParticles.Count; i++)
+        {
+            GameObject ps = Instantiate(lastParticles[i]);
+            ps.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
+            ps.gameObject.transform.localPosition = new Vector3(-0.066f, -0.485f, -1.0f);
         }
 
         score = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().Score;
@@ -177,6 +177,8 @@ public class UIManager : MonoBehaviour
         }
         newPickup.gameObject.GetComponent<SpriteRenderer>().enabled = false;
         newPickup.gameObject.GetComponent<BoxCollider2D>().enabled = false;
+
+        newPickup.Effect(); 
 
         GameObject newPickupUI = Instantiate(blankPickupPrefab, pickupPositions[nextPickupPos], Quaternion.Euler(0, 0, 0));
         newPickupUI.GetComponent<Image>().sprite = newPickup.gameObject.GetComponent<SpriteRenderer>().sprite;

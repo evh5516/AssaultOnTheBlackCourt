@@ -7,7 +7,8 @@ public class Exit : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Physics2D.IgnoreLayerCollision(12, 16); 
+        Physics2D.IgnoreLayerCollision(12, 16);
+        Physics2D.IgnoreLayerCollision(9, 16);
     }
 
     // Update is called once per frame
@@ -32,6 +33,11 @@ public class Exit : MonoBehaviour
         dataManager.GetComponent<DataManager>().DresdenHealth = collision.gameObject.GetComponent<Dresden>().Health;
         dataManager.GetComponent<DataManager>().ActivePickups = Camera.main.GetComponent<UIManager>().ActivePickups;
         dataManager.GetComponent<DataManager>().Score = Camera.main.GetComponent<UIManager>().Score;
+        ParticleSystem[] lastParticles = GameObject.Find("DresdenParticles(Clone)").GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem ps in lastParticles)
+        {
+            dataManager.GetComponent<DataManager>().DresdenParticles.Add(ps.gameObject);
+        }
 
         GameObject[] pickups = GameObject.FindGameObjectsWithTag("Pickup"); 
         
