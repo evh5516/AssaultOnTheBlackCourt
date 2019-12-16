@@ -68,23 +68,26 @@ public class UIManager : MonoBehaviour
                 enemies.Add(e); 
         }
 
-        List<(Pickup, GameObject)> lastActivePickups = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().ActivePickups;
-        List<GameObject> lastParticles = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().DresdenParticles; 
-
-        for (int i = 0; i < lastActivePickups.Count; i++)
+        if (SceneManager.GetActiveScene().name != "Main Menu" && SceneManager.GetActiveScene().name != "Credits" && SceneManager.GetActiveScene().name != "Instructions")
         {
-            AddPickup(lastActivePickups[i].Item1);
-        }
+            List<(Pickup, GameObject)> lastActivePickups = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().ActivePickups;
+            List<GameObject> lastParticles = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().DresdenParticles;
 
-        for (int i = 0; i < lastParticles.Count; i++)
-        {
-            GameObject ps = Instantiate(lastParticles[i]);
-            ps.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
-            ps.gameObject.transform.localPosition = new Vector3(-0.066f, -0.485f, -1.0f);
-        }
+            for (int i = 0; i < lastActivePickups.Count; i++)
+            {
+                AddPickup(lastActivePickups[i].Item1);
+            }
 
-        score = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().Score;
-        scoreText.text = score.ToString();
+            for (int i = 0; i < lastParticles.Count; i++)
+            {
+                GameObject ps = Instantiate(lastParticles[i]);
+                ps.transform.parent = GameObject.FindGameObjectWithTag("Player").transform;
+                ps.gameObject.transform.localPosition = new Vector3(-0.066f, -0.485f, -1.0f);
+            }
+
+            score = GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().Score;
+            scoreText.text = score.ToString();
+        }
     }
 
     private void Update()
@@ -130,6 +133,7 @@ public class UIManager : MonoBehaviour
     public void LoadNewScene(string sceneName)
     {
         if (sceneName == "Level1") GameObject.Find("DataManager(Clone)").GetComponent<DataManager>().Score = 0;
+        else if (sceneName == "Main Menu") GameObject.Find("DataManager(Clone)").GetComponent<AudioSource>().Stop(); 
         SceneManager.LoadSceneAsync(sceneName);
     }
 

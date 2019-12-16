@@ -24,6 +24,10 @@ public class AgentManager : MonoBehaviour {
         {
             Instantiate(dataManagerPrefab);
         }
+        else
+        {
+            GameObject.Find("DataManager(Clone)").GetComponent<AudioSource>().Play(); 
+        }
 
         //try
         //{
